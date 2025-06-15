@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://biaao2bk7nwtc"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x5vcc"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_x5vcc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7bns"]
+albedo_color = Color(0.113725, 0.360784, 0, 1)
+
+[node name="Env" type="Node3D"]
+
+[node name="TemporaryGround" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TemporaryGround"]
+shape = SubResource("WorldBoundaryShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TemporaryGround"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+mesh = SubResource("QuadMesh_x5vcc")
+surface_material_override/0 = SubResource("StandardMaterial3D_t7bns")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+omni_range = 17.0
+omni_attenuation = 0.0
