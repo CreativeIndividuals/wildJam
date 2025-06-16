@@ -1,7 +1,7 @@
 class_name Interractable
-extends Area3D  # Changed from StaticBody3D to Area3D since we want overlap detection
+extends Area3D
 
-signal clue_inspected(clue_data)
+signal clue_inspected(clue_data: Dictionary)
 
 @export var clue_id: String
 @export var memory_owner: String
@@ -12,6 +12,15 @@ var highlight_material: StandardMaterial3D
 func _ready():
 	add_to_group("interactables")
 	_setup_highlight_material()
+	
+	# Auto-connect to DialogueBox
+	var dialogue_box = %dialogueBox
+	if dialogue_box:
+		# Connect the signal to the dialogue box
+		if !clue_inspected.is_connected(dialogue_box._on_clue_inspected):
+			clue_inspected.connect(dialogue_box._on_clue_inspected)
+	else:
+		push_error("DialogueBox not found for clue: " + clue_id)
 
 func _setup_highlight_material():
 	highlight_material = StandardMaterial3D.new()

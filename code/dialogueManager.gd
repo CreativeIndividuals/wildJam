@@ -3,7 +3,6 @@ extends Node
 @onready var dialogueLine: Label = $Line
 @onready var person: Label = $Person
 @onready var timer = $Timer
-
 func _ready():
 	$".".hide()
 	timer.timeout.connect(_on_timer_timeout)
@@ -19,3 +18,7 @@ func show_dialogue(character_name: String, line: String):
 
 func _on_timer_timeout():
 	$".".hide()
+
+
+func _on_game_state_phase_changed(new_phase: int) -> void:
+	pass # Replace with function body.
