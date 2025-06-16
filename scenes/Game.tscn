@@ -100,6 +100,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.765223, 1, 0.839826, 1)
 
+[node name="Timer" type="Timer" parent="HUD/dialogueBox"]
+
 [node name="postProcessing" type="ColorRect" parent="HUD"]
 visible = false
 anchors_preset = 15

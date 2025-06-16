@@ -1,27 +1,37 @@
 extends Node
 
-signal clue_discovered(clue_id, owner)
+signal clue_collected(clue_data)
+signal all_clues_collected
 
-var discovered_clues = {}  # Dictionary of clue_id: owner pairs
+var collected_clues = {}
+var total_clues: int
+var clues_found: int = 0
 
 func _ready():
-	# Connect to all interactables in the scene
-	get_tree().call_group("interactables", "connect", "clue_inspected", _on_clue_inspected)
+	# Count total clues in scene
+	total_clues = get_tree().get_nodes_in_group("interactables").size()
+	
+	# Connect to all interactables
+	for interactable in get_tree().get_nodes_in_group("interactables"):
+		interactable.clue_inspected.connect(_on_clue_inspected)
 
-func _on_clue_inspected(clue_id: String, owner: String):
-	discovered_clues[clue_id] = owner
-	clue_discovered.emit(clue_id, owner)
+func _on_clue_inspected(clue_data: Dictionary):
+	collected_clues[clue_data.id] = clue_data
+	clues_found += 1
+	clue_collected.emit(clue_data)
+	
+	if clues_found >= total_clues:
+		all_clues_collected.emit()
+
+func get_clue(clue_id: String) -> Dictionary:
+	return collected_clues.get(clue_id, {})
 
 func has_clue(clue_id: String) -> bool:
-	return discovered_clues.has(clue_id)
+	return collected_clues.has(clue_id)
 
-func get_clue_owner(clue_id: String) -> String:
-	return discovered_clues.get(clue_id, "")
-
-func validate_memory(character: String, clue_id: String) -> bool:
-	if not has_clue(clue_id):
-		return false
-	return discovered_clues[clue_id] == character
+func get_all_clues() -> Dictionary:
+	return collected_clues
 
 func clear_clues():
-	discovered_clues.clear()
+	collected_clues.clear()
+	clues_found = 0

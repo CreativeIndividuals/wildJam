@@ -1,61 +1,36 @@
 extends Node
 
-class_name GameState
+enum Phase {RESEARCH, JUDGEMENT}
 
-enum Phase {RESEARCH, JUDGEMENT, WIN, LOSS}
+signal phase_changed(new_phase)
+signal game_over(correct)
 
-var current_phase = Phase.RESEARCH
-var impostor_index: int
-var research_time: float = 120.0 # 2 minutes
-
-@onready var timer = $Timer
-@onready var player = $Player
-@onready var ui = $Player/UI
-@onready var characters = $Characters
-@onready var dialogue_text = $Player/UI/DialogueText
-@onready var end_text = $Player/UI/EndText
-@onready var phase_text = $Player/UI/PhaseText
-@onready var timer_text = $Player/UI/TimerText
-
-const JUDGEMENT_POSITION = Vector3(0, 0, 5)
-const DIALOGUE_DURATION = 3.0
+var current_phase: Phase = Phase.RESEARCH
+var impostor_character: Node3D = null  # Changed type to Node3D since we can check is_impostor() through method
 
 func _ready():
-	impostor_index = randi() % 4
-	timer.wait_time = research_time
-	timer.one_shot = true
-	timer.timeout.connect(_on_Timer_timeout)
-	timer.start()
-	
-	for character in characters.get_children():
-		character.visible = false
-	dialogue_text.visible = false
-	end_text.visible = false
-	phase_text.text = "RESEARCH PHASE: Find the clues!"
-	
-	print("Debug - Impostor is: ", impostor_index)
+	setup_game()
 
-func _process(_delta):
-	if current_phase == Phase.RESEARCH:
-		timer_text.text = "Time: %d" % timer.time_left
-	
-func _on_Timer_timeout():
+func setup_game():
+	current_phase = Phase.RESEARCH
+	_assign_impostor()
+
+func transition_to_judgement():
 	current_phase = Phase.JUDGEMENT
-	timer_text.visible = false
-	phase_text.text = "JUDGEMENT PHASE\nE to Listen - Q to Accuse"
-	
-	player.global_position = JUDGEMENT_POSITION
-	player.rotation.y = PI
-	
-	for character in characters.get_children():
-		character.visible = true
+	phase_changed.emit(current_phase)
 
-func make_accusation(index: int):
-	if index == impostor_index:
-		current_phase = Phase.WIN
-		end_text.text = "You Win! You caught the impostor!"
-	else:
-		current_phase = Phase.LOSS
-		end_text.text = "Wrong! The real impostor was Character " + str(impostor_index)
-	end_text.visible = true
-	phase_text.visible = false
+func make_accusation(character: Node3D):  # Changed type to Node3D
+	if current_phase != Phase.JUDGEMENT:
+		return
+	
+	if character.has_method("is_the_impostor"):
+		game_over.emit(character.is_the_impostor())
+
+func _assign_impostor():
+	var characters = get_tree().get_nodes_in_group("characters")
+	if characters.is_empty():
+		return
+	
+	impostor_character = characters[randi() % characters.size()]
+	if impostor_character.has_method("set_as_impostor"):
+		impostor_character.set_as_impostor()
