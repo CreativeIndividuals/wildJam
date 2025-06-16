@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d26247ljh1cnm"]
+[gd_scene load_steps=10 format=3 uid="uid://d26247ljh1cnm"]
 
 [ext_resource type="PackedScene" uid="uid://biaao2bk7nwtc" path="res://scenes/Enviornment.tscn" id="1_ibkli"]
 [ext_resource type="Script" uid="uid://chb55jucsm5ad" path="res://code/GameState.gd" id="2_cpr0p"]
+[ext_resource type="Texture2D" uid="uid://dfykxjiun5o4t" path="res://2d/crosshair.png" id="2_s0nni"]
 [ext_resource type="Script" uid="uid://0sygf5n1lopq" path="res://code/Player.gd" id="3_78awf"]
-[ext_resource type="PackedScene" uid="uid://bwahtxmpwwgvo" path="res://scenes/Hud.tscn" id="3_s0nni"]
+[ext_resource type="Texture2D" uid="uid://b52b5eobvljo5" path="res://2d/dialogueBox.png" id="3_aug50"]
+[ext_resource type="Script" uid="uid://c4rw1c2y6urot" path="res://code/dialogueManager.gd" id="4_aug50"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qbsmt"]
 
@@ -14,8 +16,176 @@
 [node name="Game" type="Node3D"]
 
 [node name="Env" parent="." instance=ExtResource("1_ibkli")]
+unique_name_in_owner = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+follow_viewport_enabled = true
+
+[node name="crosshair" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="HUD/crosshair"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.493827
+anchor_right = 0.5
+anchor_bottom = 0.493827
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_s0nni")
+
+[node name="Interact" type="Label" parent="HUD"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -136.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+text = "press E to inspect"
+
+[node name="dialogueBox" type="TextureRect" parent="HUD"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -200.0
+offset_right = 256.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_aug50")
+script = ExtResource("4_aug50")
+
+[node name="Person" type="Label" parent="HUD/dialogueBox"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 88.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(5.67943e-06, 0.560148, 0.304097, 1)
+
+[node name="Line" type="Label" parent="HUD/dialogueBox"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -24.0
+offset_right = -8.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.765223, 1, 0.839826, 1)
+
+[node name="postProcessing" type="ColorRect" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="gameOver" type="ColorRect" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0235294, 0.0313726, 1)
+
+[node name="result" type="Label" parent="HUD/gameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -188.0
+offset_right = 237.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "congrats you have won/lost"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HUD/gameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -92.0
+offset_right = 128.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "hope you enjoyed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="credits" type="Label" parent="HUD/gameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "made by(discords):
+.hakashikatake
+qad7098
+the2nd
+_xzo_"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="blackoutOverlay" type="ColorRect" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="GameState" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_cpr0p")
 
 [node name="Timer" type="Timer" parent="GameState"]
@@ -24,9 +194,8 @@ wait_time = 120.0
 [node name="BlackoutTimer" type="Timer" parent="GameState"]
 wait_time = 2.0
 
-[node name="HUD" parent="." instance=ExtResource("3_s0nni")]
-
 [node name="Player" type="CharacterBody3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3908, 0)
 script = ExtResource("3_78awf")
 
@@ -44,6 +213,4 @@ fov = 75.9835
 
 [node name="interactRange" type="RayCast3D" parent="Player/Camera3D"]
 target_position = Vector3(0, 0, -6)
-collide_with_areas = true
-collide_with_bodies = false
 debug_shape_custom_color = Color(0.596078, 0.247059, 0.0509804, 1)

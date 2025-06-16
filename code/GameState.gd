@@ -1,5 +1,7 @@
 extends Node
 
+class_name GameState
+
 enum Phase {RESEARCH, JUDGEMENT, WIN, LOSS}
 
 var current_phase = Phase.RESEARCH

@@ -60,6 +60,3 @@ func advance_dialogue():
 		# Use the fake clue in dialogue
 	
 	dialogue_index += 1
-
-func make_accusation(accused_index: int) -> bool:
-	return accused_index == impostor_index
