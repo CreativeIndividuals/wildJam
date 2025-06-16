@@ -1,68 +1,53 @@
 extends Node
 
-signal phase_changed(new_phase)
-signal time_updated(seconds_left)
+enum Phase {RESEARCH, JUDGEMENT, WIN, LOSS}
 
-enum GamePhase {INIT, RESEARCH, BLACKOUT, JUDGEMENT, WIN, LOSS}
+var current_phase = Phase.RESEARCH
+var impostor_index: int
+var research_time: float = 120.0 # 2 minutes
 
-const RESEARCH_TIME = 120.0  # 2 minutes
-const BLACKOUT_DURATION = 2.0
+@onready var timer = $Timer
+@onready var player = $Player
+@onready var ui = $Player/UI
+@onready var characters = $Characters
+@onready var dialogue_text = $Player/UI/DialogueText
+@onready var end_text = $Player/UI/EndText
 
-var current_phase: GamePhase = GamePhase.INIT
-var family_members = ["Mother", "Father", "Brother", "Girlfriend"]
-var impostor_index: int = -1
-var creature_identity: String = ""
-
-@onready var timer = $Timer #for researching
-@onready var blackout_timer = $BlackoutTimer
+const JUDGEMENT_POSITION = Vector3(0, 0, 5)
+const DIALOGUE_DURATION = 3.0
 
 func _ready():
-	setup_timers()
-	start_game()
-
-func setup_timers():
-	timer.wait_time = RESEARCH_TIME
+	# Initialize game state
+	impostor_index = randi() % 4
+	timer.wait_time = research_time
 	timer.one_shot = true
-	timer.timeout.connect(_on_research_timer_timeout)
-	
-	blackout_timer.wait_time = BLACKOUT_DURATION
-	blackout_timer.one_shot = true
-	blackout_timer.timeout.connect(_on_blackout_timer_timeout)
-
-func start_game():
-	# Pick random impostor
-	impostor_index = randi() % family_members.size()
-	creature_identity = family_members[impostor_index]
-	change_phase(GamePhase.RESEARCH)
+	timer.timeout.connect(_on_Timer_timeout)
 	timer.start()
-
-func change_phase(new_phase: GamePhase):
-	current_phase = new_phase
-	phase_changed.emit(new_phase)
 	
-	match new_phase:
-		GamePhase.RESEARCH:
-			get_tree().call_group("interactables", "enable")
-			$Player.set_movement_enabled(true)
-		GamePhase.BLACKOUT:
-			get_tree().call_group("interactables", "disable")
-			$Player.set_movement_enabled(false)
-			$UI/BlackoutOverlay.fade_in()
-			blackout_timer.start()
-		GamePhase.JUDGEMENT:
-			$UI/BlackoutOverlay.fade_out()
-			$UI/DialogueUI.start_dialogue()
-		GamePhase.WIN, GamePhase.LOSS:
-			$UI/GameOverUI.show_result(new_phase == GamePhase.WIN)
+	# Hide characters and UI elements initially
+	for character in characters.get_children():
+		character.visible = false
+	dialogue_text.visible = false
+	end_text.visible = false
+	
+	print("Debug - Impostor is: ", impostor_index) # Debug info
 
-func _on_research_timer_timeout():
-	change_phase(GamePhase.BLACKOUT)
+func _on_Timer_timeout():
+	current_phase = Phase.JUDGEMENT
+	
+	# Move player to judgement room
+	player.global_position = JUDGEMENT_POSITION
+	player.rotation.y = PI
+	
+	# Show characters
+	for character in characters.get_children():
+		character.visible = true
 
-func _on_blackout_timer_timeout():
-	change_phase(GamePhase.JUDGEMENT)
-
-func make_accusation(accused_index: int):
-	if accused_index == impostor_index:
-		change_phase(GamePhase.WIN)
+func make_accusation(index: int):
+	if index == impostor_index:
+		current_phase = Phase.WIN
+		end_text.text = "You Win! You caught the impostor!"
 	else:
-		change_phase(GamePhase.LOSS)
+		current_phase = Phase.LOSS
+		end_text.text = "Wrong! The real impostor was Character " + str(impostor_index)
+	end_text.visible = true

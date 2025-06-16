@@ -1,66 +1,65 @@
-extends Control
+extends Node
 
-var current_speaker_index = 0
-var memories = {
-	"Mother": ["family_photo", "old_diary"],
-	"Father": ["workbench", "fishing_rod"],
-	"Brother": ["game_console", "sports_trophy"],
-	"Girlfriend": ["mix_tape", "art_supplies"]
+signal dialogue_finished
+signal character_speaking(character_name)
+
+const DIALOGUE_DATA = {
+	"Mother": {
+		"clues": ["sketchbook", "cornflakes"],
+		"lines": [
+			"I remember the sketchbook you always carried...",
+			"And those cornflakes you'd eat every morning..."
+		]
+	},
+	"Brother": {
+		"clues": ["boardgame", "tv_console"],
+		"lines": [
+			"Remember that board game we used to play?",
+			"And the TV console we fought over..."
+		]
+	},
+	"Girlfriend": {
+		"clues": ["cassette", "easel"],
+		"lines": [
+			"That old cassette player still has our song...",
+			"The easel where you painted our first date..."
+		]
+	},
+	"Creature": {
+		"clues": ["fishing_trip", "baseball_glove"],
+		"lines": [
+			"The fishing trip photo from last summer...",
+			"Your lucky baseball glove from childhood..."
+		]
+	}
 }
 
-@onready var speaker_label = $SpeakerLabel
-@onready var dialogue_label = $DialogueLabel
-@onready var portraits = $Portraits
-@onready var next_button = $NextButton
+var current_speaker: String
+var dialogue_index: int = 0
+var characters: Array
+var impostor_index: int
 
-func start_dialogue():
-	show()
-	current_speaker_index = 0
-	show_next_statement()
+func start_dialogue(character_list: Array, _impostor_index: int):
+	characters = character_list
+	impostor_index = _impostor_index
+	dialogue_index = 0
+	advance_dialogue()
 
-func show_next_statement():
-	if current_speaker_index >= 4:
-		show_accusation_prompt()
+func advance_dialogue():
+	if dialogue_index >= characters.size():
+		dialogue_finished.emit()
 		return
 		
-	var game_state = get_node("/root/GameState")
-	var current_character = game_state.family_members[current_speaker_index]
-	speaker_label.text = current_character
+	current_speaker = characters[dialogue_index]
+	character_speaking.emit(current_speaker)
 	
-	var statement
-	if current_speaker_index == game_state.impostor_index:
-		# Creature lies by using a memory from another character
-		var valid_memories = []
-		for character in memories:
-			if character != current_character:
-				valid_memories.append_array(memories[character])
-		var fake_memory = valid_memories[randi() % valid_memories.size()]
-		statement = generate_statement(fake_memory)
-	else:
-		var char_memories = memories[current_character]
-		var true_memory = char_memories[randi() % char_memories.size()]
-		statement = generate_statement(true_memory)
+	# If this is the impostor, use a random clue from another character
+	if dialogue_index == impostor_index:
+		var other_char = characters[(dialogue_index + 1) % characters.size()]
+		var fake_clue = DIALOGUE_DATA[other_char]["clues"].pick_random()
+		# Use the fake clue in dialogue
 	
-	dialogue_label.text = statement
-	current_speaker_index += 1
+	dialogue_index += 1
 
-func generate_statement(memory: String) -> String:
-	var statements = [
-		"I remember when we used the %s together.",
-		"Don't you remember the %s we shared?",
-		"We spent so much time with the %s.",
-		"The %s was special to us."
-	]
-	return statements[randi() % statements.size()] % memory
-
-func show_accusation_prompt():
-	dialogue_label.text = "One of us is not who they seem. Who is the impostor?"
-	next_button.hide()
-	# Enable portrait clicking for accusation
-
-func _on_portrait_clicked(index: int):
-	if not next_button.visible:  # In accusation phase
-		get_node("/root/GameState").make_accusation(index)
-
-func _on_next_button_pressed():
-	show_next_statement()
+func make_accusation(accused_index: int) -> bool:
+	return accused_index == impostor_index
