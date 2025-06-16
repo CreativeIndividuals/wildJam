@@ -1,40 +1,26 @@
 extends Control
 
-signal dialogue_finished
-
 var current_speaker_index = 0
-var dialogue_active = false
+var memories = {
+	"Mother": ["family_photo", "old_diary"],
+	"Father": ["workbench", "fishing_rod"],
+	"Brother": ["game_console", "sports_trophy"],
+	"Girlfriend": ["mix_tape", "art_supplies"]
+}
 
 @onready var speaker_label = $SpeakerLabel
 @onready var dialogue_label = $DialogueLabel
+@onready var portraits = $Portraits
 @onready var next_button = $NextButton
-@onready var accuse_button = $AccuseButton
-
-var character_statements = {
-	"Mother": ["I remember drawing in your sketchbook.", "We always had cornflakes for breakfast."],
-	"Father": ["I read the newspaper to you every Sunday.", "Remember our morning coffee talks?"],
-	"Brother": ["Remember that board game we used to play?", "We spent hours on that old TV console."],
-	"Girlfriend": ["That cassette player was our favorite.", "I taught you how to paint at that easel."]
-}
-
-var creature_lies = {
-	"Mother": ["Remember our morning coffee talks?", "We spent hours on that TV console."],
-	"Father": ["We always had cornflakes for breakfast.", "That cassette player was our favorite."],
-	"Brother": ["I read the newspaper every Sunday.", "I taught you how to paint at that easel."],
-	"Girlfriend": ["I remember drawing in your sketchbook.", "Remember that board game we used to play?"]
-}
 
 func start_dialogue():
 	show()
-	dialogue_active = true
 	current_speaker_index = 0
-	next_button.show()
-	accuse_button.hide()
 	show_next_statement()
 
 func show_next_statement():
 	if current_speaker_index >= 4:
-		end_dialogue()
+		show_accusation_prompt()
 		return
 		
 	var game_state = get_node("/root/GameState")
@@ -43,23 +29,38 @@ func show_next_statement():
 	
 	var statement
 	if current_speaker_index == game_state.impostor_index:
-		var lies = creature_lies[game_state.creature_identity]
-		statement = lies[randi() % lies.size()]
+		# Creature lies by using a memory from another character
+		var valid_memories = []
+		for character in memories:
+			if character != current_character:
+				valid_memories.append_array(memories[character])
+		var fake_memory = valid_memories[randi() % valid_memories.size()]
+		statement = generate_statement(fake_memory)
 	else:
-		var truths = character_statements[current_character]
-		statement = truths[randi() % truths.size()]
+		var char_memories = memories[current_character]
+		var true_memory = char_memories[randi() % char_memories.size()]
+		statement = generate_statement(true_memory)
 	
 	dialogue_label.text = statement
 	current_speaker_index += 1
 
-func end_dialogue():
+func generate_statement(memory: String) -> String:
+	var statements = [
+		"I remember when we used the %s together.",
+		"Don't you remember the %s we shared?",
+		"We spent so much time with the %s.",
+		"The %s was special to us."
+	]
+	return statements[randi() % statements.size()] % memory
+
+func show_accusation_prompt():
+	dialogue_label.text = "One of us is not who they seem. Who is the impostor?"
 	next_button.hide()
-	accuse_button.show()
-	dialogue_label.text = "Who is the creature? Click on their portrait to accuse."
+	# Enable portrait clicking for accusation
+
+func _on_portrait_clicked(index: int):
+	if not next_button.visible:  # In accusation phase
+		get_node("/root/GameState").make_accusation(index)
 
 func _on_next_button_pressed():
 	show_next_statement()
-
-func _on_portrait_clicked(index: int):
-	if accuse_button.visible:
-		get_node("/root/GameState").make_accusation(index)

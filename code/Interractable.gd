@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends Area3D
 
 @export var clue_id: String
 @export_multiline var description: String

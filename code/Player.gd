@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.0
 const MOUSE_SENSITIVITY = 0.002
 const RAY_LENGTH = 2.0
 
@@ -22,7 +21,7 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * MOUSE_SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
 	
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and can_move:
 		try_interact()
 
 func _physics_process(delta):

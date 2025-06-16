@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://biaao2bk7nwtc"]
+[gd_scene load_steps=7 format=3 uid="uid://biaao2bk7nwtc"]
+
+[ext_resource type="Script" uid="uid://cq5d5yawdbkcw" path="res://code/Interractable.gd" id="1_t7bns"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x5vcc"]
 
@@ -6,6 +8,10 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7bns"]
 albedo_color = Color(0.113725, 0.360784, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5vcc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t7bns"]
 
 [node name="Env" type="Node3D"]
 
@@ -23,3 +29,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_t7bns")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 omni_range = 17.0
 omni_attenuation = 0.0
+
+[node name="clues" type="Node3D" parent="."]
+
+[node name="clue1" type="Area3D" parent="clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958167, 5.7256)
+script = ExtResource("1_t7bns")
+clue_id = "sketchbook"
+description = "bomboclat"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="clues/clue1"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="clues/clue1"]
+mesh = SubResource("BoxMesh_t7bns")

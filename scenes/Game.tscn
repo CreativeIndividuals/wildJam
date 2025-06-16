@@ -18,21 +18,27 @@
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("2_cpr0p")
 
+[node name="Timer" type="Timer" parent="GameState"]
+wait_time = 120.0
+
+[node name="BlackoutTimer" type="Timer" parent="GameState"]
+wait_time = 2.0
+
 [node name="HUD" parent="." instance=ExtResource("3_s0nni")]
 
 [node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3908, 0)
 script = ExtResource("3_78awf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_qbsmt")
 
 [node name="PlaceholderMesh" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("SphereMesh_ibkli")
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.9987, 0.0509764, 0, -0.0509764, 0.9987, 0, 1.71693, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9987, 0.0509764, 0, -0.0509764, 0.9987, 0, 0.7, 0)
 environment = SubResource("Environment_cpr0p")
 fov = 75.9835
 

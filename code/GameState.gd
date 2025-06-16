@@ -1,7 +1,6 @@
 extends Node
 
 signal phase_changed(new_phase)
-signal game_over(won)
 signal time_updated(seconds_left)
 
 enum GamePhase {INIT, RESEARCH, BLACKOUT, JUDGEMENT, WIN, LOSS}
@@ -14,28 +13,24 @@ var family_members = ["Mother", "Father", "Brother", "Girlfriend"]
 var impostor_index: int = -1
 var creature_identity: String = ""
 
-@onready var timer: Timer = $Timer
-@onready var blackout_timer: Timer = $BlackoutTimer
+@onready var timer = $Timer #for researching
+@onready var blackout_timer = $BlackoutTimer
 
 func _ready():
 	setup_timers()
 	start_game()
 
-func _process(_delta):
-	if current_phase == GamePhase.RESEARCH:
-		time_updated.emit(timer.time_left)
-
 func setup_timers():
-	timer.one_shot = true
 	timer.wait_time = RESEARCH_TIME
+	timer.one_shot = true
 	timer.timeout.connect(_on_research_timer_timeout)
 	
-	blackout_timer.one_shot = true
 	blackout_timer.wait_time = BLACKOUT_DURATION
+	blackout_timer.one_shot = true
 	blackout_timer.timeout.connect(_on_blackout_timer_timeout)
 
 func start_game():
-	# Select random family member to be replaced by creature
+	# Pick random impostor
 	impostor_index = randi() % family_members.size()
 	creature_identity = family_members[impostor_index]
 	change_phase(GamePhase.RESEARCH)
