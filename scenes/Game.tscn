@@ -53,11 +53,9 @@ omni_attenuation = 0.0
 
 [node name="clues" type="Node3D" parent="Env"]
 
-[node name="clue1" type="Area3D" parent="Env/clues"]
+[node name="clue1" type="RigidBody3D" parent="Env/clues"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958167, 5.7256)
 script = ExtResource("1_400sg")
-clue_id = "sketchbook"
-memory_owner = "Mother"
 description = "bomboclat"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue1"]
@@ -69,6 +67,7 @@ mesh = SubResource("BoxMesh_t7bns")
 [node name="characters" type="Node3D" parent="Env"]
 
 [node name="mother" type="RigidBody3D" parent="Env/characters"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41485, 0.958167, 5.7256)
 script = ExtResource("2_g4kob")
 character_name = "Mother"
@@ -83,6 +82,7 @@ skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="father" type="RigidBody3D" parent="Env/characters"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9492, 0.958167, 5.7256)
 script = ExtResource("2_g4kob")
 character_name = "Father"
@@ -97,6 +97,7 @@ skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="brother" type="RigidBody3D" parent="Env/characters"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2231, 0.958167, 5.7256)
 script = ExtResource("2_g4kob")
 character_name = "Brother"
@@ -111,6 +112,7 @@ skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="girlfriend" type="RigidBody3D" parent="Env/characters"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1489, 0.958167, 5.7256)
 script = ExtResource("2_g4kob")
 character_name = "Girlfriend"
@@ -209,6 +211,8 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.765223, 1, 0.839826, 1)
 
 [node name="Timer" type="Timer" parent="HUD/dialogueBox"]
+one_shot = true
+ignore_time_scale = true
 
 [node name="postProcessing" type="ColorRect" parent="HUD"]
 visible = false

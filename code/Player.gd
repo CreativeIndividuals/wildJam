@@ -93,20 +93,10 @@ func _check_ray_collision():
 		_clear_interaction()
 		return
 		
-	if game_state.current_phase == game_state.Phase.RESEARCH:
-		# Check both the collider and its parent for Interractable
-		if collider is Interractable:
-			_handle_interactable_hover(collider)
-		elif collider.get_parent() is Interractable:
-			_handle_interactable_hover(collider.get_parent())
-		else:
-			_clear_interaction()
-	
-	elif game_state.current_phase == game_state.Phase.JUDGEMENT:
-		if collider.is_in_group("characters"):
+	if collider.get_parent() is Interractable:
+		_handle_interactable_hover(collider.get_parent())
+	elif collider.get_parent() is cha:
 			_handle_character_hover()
-		else:
-			_clear_interaction()
 
 func _handle_interaction():
 	if !ray.is_colliding():

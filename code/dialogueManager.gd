@@ -3,22 +3,28 @@ extends Node
 @onready var dialogueLine: Label = $Line
 @onready var person: Label = $Person
 @onready var timer = $Timer
+
+@export var DialogueTimeout := 5.0
+
 func _ready():
 	$".".hide()
-	timer.timeout.connect(_on_timer_timeout)
-	
-	# Connect to all characters in the scene
+	for clue in get_tree().get_nodes_in_group("clues"):
+		clue.clueInspected.connect(_on_clue_collected)
 	for character in get_tree().get_nodes_in_group("characters"):
 		character.dialogue_triggered.connect(show_dialogue)
 
 func show_dialogue(character_name: String, line: String):
-	dialogueLine.text = character_name + ": " + line
+	person.text=character_name
+	dialogueLine.text = line
 	$".".show()
-	timer.start(3.0)  # Show dialogue for 3 seconds
+	timer.start(DialogueTimeout)
 
 func _on_timer_timeout():
 	$".".hide()
 
 
 func _on_game_state_phase_changed(new_phase: int) -> void:
-	pass # Replace with function body.
+	show_dialogue("Me","what happened? \nwhere am i? \nanyways I only remember three of you being there WHICH ONE IS FAKE")
+
+func _on_clue_collected(clue_data: Dictionary)->void:
+	show_dialogue("Me","hmm... a "+clue_data.get("id")+" "+clue_data.get("description"))

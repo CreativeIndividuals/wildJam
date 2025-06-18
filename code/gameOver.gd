@@ -8,16 +8,12 @@ func _ready():
 	hide()
 	quit_button.pressed.connect(_on_quit_pressed)
 
-func _on_retry_pressed():
-	get_tree().reload_current_scene()
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	hide()
-
 func _on_quit_pressed():
 	get_tree().quit()
 
 
 func _on_game_state_game_over(correct: bool) -> void:
-	result_label.text = "You " + ("Found" if correct else "Missed") + " the Impostor!"
+	result_label.text = "Congrats You Have " + ("Won" if correct else "Lost")
+	result_details.text = "it was your "+%GameState.impostor_character.character_name+" all along"
 	show()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
