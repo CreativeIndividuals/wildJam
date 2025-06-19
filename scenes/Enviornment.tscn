@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://5eatf7315eyo"]
+
+[ext_resource type="Script" uid="uid://cq5d5yawdbkcw" path="res://code/Interractable.gd" id="1_t7bns"]
+[ext_resource type="Script" uid="uid://bimsnwhown4mg" path="res://code/character.gd" id="2_6s3yw"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x5vcc"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_x5vcc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7bns"]
+albedo_color = Color(0.113725, 0.360784, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5vcc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t7bns"]
+
+[sub_resource type="Skin" id="Skin_tu7fu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxkoi"]
+albedo_color = Color(0.572549, 0.278431, 0.301961, 1)
+
+[node name="Env" type="Node3D"]
+
+[node name="TemporaryGround" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TemporaryGround"]
+shape = SubResource("WorldBoundaryShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TemporaryGround"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+mesh = SubResource("QuadMesh_x5vcc")
+surface_material_override/0 = SubResource("StandardMaterial3D_t7bns")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+omni_range = 17.0
+omni_attenuation = 0.0
+
+[node name="clues" type="Node3D" parent="."]
+
+[node name="clue1" type="Area3D" parent="clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958167, 5.7256)
+script = ExtResource("1_t7bns")
+clue_id = "sketchbook"
+memory_owner = "Mother"
+description = "bomboclat"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="clues/clue1"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="clues/clue1"]
+mesh = SubResource("BoxMesh_t7bns")
+
+[node name="characters" type="Node3D" parent="."]
+
+[node name="mother" type="RigidBody3D" parent="characters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41485, 0.958167, 5.7256)
+script = ExtResource("2_6s3yw")
+character_name = "Mother"
+dialogue_lines = Array[String](["", "", ""])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="characters/mother"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="characters/mother"]
+mesh = SubResource("BoxMesh_t7bns")
+skin = SubResource("Skin_tu7fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
+
+[node name="father" type="RigidBody3D" parent="characters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9492, 0.958167, 5.7256)
+script = ExtResource("2_6s3yw")
+character_name = "Father"
+dialogue_lines = Array[String](["", "", ""])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="characters/father"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="characters/father"]
+mesh = SubResource("BoxMesh_t7bns")
+skin = SubResource("Skin_tu7fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
+
+[node name="brother" type="RigidBody3D" parent="characters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2231, 0.958167, 5.7256)
+script = ExtResource("2_6s3yw")
+character_name = "Brother"
+dialogue_lines = Array[String](["", "", ""])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="characters/brother"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="characters/brother"]
+mesh = SubResource("BoxMesh_t7bns")
+skin = SubResource("Skin_tu7fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
+
+[node name="girlfriend" type="RigidBody3D" parent="characters"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1489, 0.958167, 5.7256)
+script = ExtResource("2_6s3yw")
+character_name = "Girlfriend"
+dialogue_lines = Array[String](["", "", ""])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="characters/girlfriend"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="characters/girlfriend"]
+mesh = SubResource("BoxMesh_t7bns")
+skin = SubResource("Skin_tu7fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
