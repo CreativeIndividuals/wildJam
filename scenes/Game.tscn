@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d26247ljh1cnm"]
+[gd_scene load_steps=20 format=3 uid="uid://d26247ljh1cnm"]
 
 [ext_resource type="Script" uid="uid://cq5d5yawdbkcw" path="res://code/Interractable.gd" id="1_400sg"]
 [ext_resource type="Script" uid="uid://chb55jucsm5ad" path="res://code/GameState.gd" id="2_cpr0p"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b52b5eobvljo5" path="res://2d/dialogueBox.png" id="3_aug50"]
 [ext_resource type="Script" uid="uid://c4rw1c2y6urot" path="res://code/dialogueManager.gd" id="4_aug50"]
 [ext_resource type="Script" uid="uid://dk01cgbjy561f" path="res://code/gameOver.gd" id="5_kiw3p"]
+[ext_resource type="Script" uid="uid://m6d2yerjsssp" path="res://code/BlackoutManager.gd" id="9_g4kob"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x5vcc"]
 
@@ -362,6 +363,12 @@ fov = 75.9835
 target_position = Vector3(0, 0, -6)
 debug_shape_custom_color = Color(0.596078, 0.247059, 0.0509804, 1)
 
+[node name="BlackoutManager" type="CanvasLayer" parent="."]
+script = ExtResource("9_g4kob")
+
+[node name="ColorRect" type="ColorRect" parent="BlackoutManager"]
+offset_right = 1150.0
+offset_bottom = 641.0
+color = Color(0, 0, 0, 1)
+
 [connection signal="timeout" from="HUD/dialogueBox/Timer" to="HUD/dialogueBox" method="_on_timer_timeout"]
-[connection signal="game_over" from="GameState" to="HUD/gameOver" method="_on_game_state_game_over"]
-[connection signal="phase_changed" from="GameState" to="HUD/dialogueBox" method="_on_game_state_phase_changed"]

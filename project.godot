@@ -15,6 +15,13 @@ run/main_scene="uid://d26247ljh1cnm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+BlackoutManager="*res://code/BlackoutManager.gd"
+AudioManager="*res://code/AudioManager.gd"
+Global="*res://code/Global.gd"
+GameState="*res://code/GameState.gd"
+
 [editor]
 
 naming/scene_name_casing=1
