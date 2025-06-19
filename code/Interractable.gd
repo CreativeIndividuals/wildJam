@@ -1,7 +1,7 @@
 class_name Interractable
 extends RigidBody3D
 
-@export var clueID:bool
+@export var clueID:String
 @export_multiline var description: String
 
 var highlight_material: StandardMaterial3D

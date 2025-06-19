@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d26247ljh1cnm"]
+[gd_scene load_steps=23 format=3 uid="uid://ds3a131765w7i"]
 
 [ext_resource type="Script" uid="uid://cq5d5yawdbkcw" path="res://code/Interractable.gd" id="1_400sg"]
 [ext_resource type="Script" uid="uid://chb55jucsm5ad" path="res://code/GameState.gd" id="2_cpr0p"]
@@ -6,8 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dfykxjiun5o4t" path="res://2d/crosshair.png" id="2_s0nni"]
 [ext_resource type="Script" uid="uid://0sygf5n1lopq" path="res://code/Player.gd" id="3_78awf"]
 [ext_resource type="Texture2D" uid="uid://b52b5eobvljo5" path="res://2d/dialogueBox.png" id="3_aug50"]
+[ext_resource type="PackedScene" uid="uid://ddhwq4vmt4j2c" path="res://scenes/Map_greyboxed.glb" id="3_qy1jj"]
 [ext_resource type="Script" uid="uid://c4rw1c2y6urot" path="res://code/dialogueManager.gd" id="4_aug50"]
 [ext_resource type="Script" uid="uid://dk01cgbjy561f" path="res://code/gameOver.gd" id="5_kiw3p"]
+[ext_resource type="Script" uid="uid://dwunflmmaap7e" path="res://code/AudioManager.gd" id="6_3xj3m"]
+[ext_resource type="AudioStream" uid="uid://rhj1o1yi7xgv" path="res://audio/music/placeholder.mp3" id="7_mcffj"]
+[ext_resource type="Script" uid="uid://dwtdotwiv0gd4" path="res://code/BlackoutManager.gd" id="9_g4kob"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x5vcc"]
 
@@ -32,99 +36,6 @@ albedo_color = Color(0.572549, 0.278431, 0.301961, 1)
 [sub_resource type="Environment" id="Environment_cpr0p"]
 
 [node name="Game" type="Node3D"]
-
-[node name="Env" type="Node3D" parent="."]
-unique_name_in_owner = true
-
-[node name="TemporaryGround" type="StaticBody3D" parent="Env"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/TemporaryGround"]
-shape = SubResource("WorldBoundaryShape3D_x5vcc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/TemporaryGround"]
-transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
-mesh = SubResource("QuadMesh_x5vcc")
-surface_material_override/0 = SubResource("StandardMaterial3D_t7bns")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Env"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-omni_range = 17.0
-omni_attenuation = 0.0
-
-[node name="clues" type="Node3D" parent="Env"]
-
-[node name="clue1" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958167, 5.7256)
-script = ExtResource("1_400sg")
-description = "bomboclat"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue1"]
-shape = SubResource("BoxShape3D_x5vcc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue1"]
-mesh = SubResource("BoxMesh_t7bns")
-
-[node name="characters" type="Node3D" parent="Env"]
-
-[node name="mother" type="RigidBody3D" parent="Env/characters"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41485, 0.958167, 5.7256)
-script = ExtResource("2_g4kob")
-character_name = "Mother"
-dialogue_lines = Array[String](["", "", ""])
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/mother"]
-shape = SubResource("BoxShape3D_x5vcc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/mother"]
-mesh = SubResource("BoxMesh_t7bns")
-skin = SubResource("Skin_tu7fu")
-surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
-
-[node name="father" type="RigidBody3D" parent="Env/characters"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9492, 0.958167, 5.7256)
-script = ExtResource("2_g4kob")
-character_name = "Father"
-dialogue_lines = Array[String](["", "", ""])
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/father"]
-shape = SubResource("BoxShape3D_x5vcc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/father"]
-mesh = SubResource("BoxMesh_t7bns")
-skin = SubResource("Skin_tu7fu")
-surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
-
-[node name="brother" type="RigidBody3D" parent="Env/characters"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2231, 0.958167, 5.7256)
-script = ExtResource("2_g4kob")
-character_name = "Brother"
-dialogue_lines = Array[String](["", "", ""])
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/brother"]
-shape = SubResource("BoxShape3D_x5vcc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/brother"]
-mesh = SubResource("BoxMesh_t7bns")
-skin = SubResource("Skin_tu7fu")
-surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
-
-[node name="girlfriend" type="RigidBody3D" parent="Env/characters"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1489, 0.958167, 5.7256)
-script = ExtResource("2_g4kob")
-character_name = "Girlfriend"
-dialogue_lines = Array[String](["", "", ""])
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/girlfriend"]
-shape = SubResource("BoxShape3D_x5vcc")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/girlfriend"]
-mesh = SubResource("BoxMesh_t7bns")
-skin = SubResource("Skin_tu7fu")
-surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -195,6 +106,8 @@ offset_top = 8.0
 offset_right = 88.0
 offset_bottom = 32.0
 theme_override_colors/font_color = Color(5.67943e-06, 0.560148, 0.304097, 1)
+clip_text = true
+text_overrun_behavior = 3
 
 [node name="Line" type="Label" parent="HUD/dialogueBox"]
 layout_mode = 1
@@ -209,6 +122,7 @@ offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.765223, 1, 0.839826, 1)
+autowrap_mode = 2
 
 [node name="Timer" type="Timer" parent="HUD/dialogueBox"]
 one_shot = true
@@ -223,6 +137,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="gameOver" type="ColorRect" parent="HUD"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -323,6 +238,7 @@ theme_override_font_sizes/font_size = 64
 text = "Quit"
 
 [node name="blackoutOverlay" type="ColorRect" parent="HUD"]
+unique_name_in_owner = true
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -330,20 +246,128 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+script = ExtResource("9_g4kob")
 
-[node name="GameState" type="Node" parent="."]
+[node name="audioManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_3xj3m")
+
+[node name="ost" type="AudioStreamPlayer" parent="audioManager"]
+stream = ExtResource("7_mcffj")
+bus = &"ost"
+
+[node name="sfx" type="AudioStreamPlayer" parent="audioManager"]
+bus = &"sfx"
+
+[node name="GameState" type="Node" parent="." node_paths=PackedStringArray("impostor_character")]
 unique_name_in_owner = true
 script = ExtResource("2_cpr0p")
+impostor_character = NodePath("../Env/characters/girlfriend")
 
 [node name="Timer" type="Timer" parent="GameState"]
-wait_time = 120.0
-
-[node name="BlackoutTimer" type="Timer" parent="GameState"]
 wait_time = 2.0
+one_shot = true
+
+[node name="Env" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="TemporaryGround" type="StaticBody3D" parent="Env"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/TemporaryGround"]
+shape = SubResource("WorldBoundaryShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/TemporaryGround"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+mesh = SubResource("QuadMesh_x5vcc")
+surface_material_override/0 = SubResource("StandardMaterial3D_t7bns")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+omni_range = 17.0
+omni_attenuation = 0.0
+
+[node name="clues" type="Node3D" parent="Env"]
+
+[node name="clue1" type="RigidBody3D" parent="Env/clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958167, 5.7256)
+script = ExtResource("1_400sg")
+clueID = "idk"
+description = "bomboclat"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue1"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue1"]
+mesh = SubResource("BoxMesh_t7bns")
+
+[node name="characters" type="Node3D" parent="Env"]
+
+[node name="mother" type="RigidBody3D" parent="Env/characters"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41485, 0.958167, 5.7256)
+script = ExtResource("2_g4kob")
+character_name = "Mother"
+dialogue_lines = Array[String](["", "", ""])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/mother"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/mother"]
+mesh = SubResource("BoxMesh_t7bns")
+skin = SubResource("Skin_tu7fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
+
+[node name="father" type="RigidBody3D" parent="Env/characters"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9492, 0.958167, 5.7256)
+script = ExtResource("2_g4kob")
+character_name = "Father"
+dialogue_lines = Array[String](["", "", ""])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/father"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/father"]
+mesh = SubResource("BoxMesh_t7bns")
+skin = SubResource("Skin_tu7fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
+
+[node name="brother" type="RigidBody3D" parent="Env/characters"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2231, 0.958167, 5.7256)
+script = ExtResource("2_g4kob")
+character_name = "Brother"
+dialogue_lines = Array[String](["", "", ""])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/brother"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/brother"]
+mesh = SubResource("BoxMesh_t7bns")
+skin = SubResource("Skin_tu7fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
+
+[node name="girlfriend" type="RigidBody3D" parent="Env/characters"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1489, 0.958167, 5.7256)
+script = ExtResource("2_g4kob")
+character_name = "Girlfriend"
+dialogue_lines = Array[String](["", "", ""])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/girlfriend"]
+shape = SubResource("BoxShape3D_x5vcc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/girlfriend"]
+mesh = SubResource("BoxMesh_t7bns")
+skin = SubResource("Skin_tu7fu")
+surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
+
+[node name="Map_greyboxed" parent="Env" instance=ExtResource("3_qy1jj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76645, 0.592169, -4.72776)
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3908, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.16492, 1.3908, 0)
 script = ExtResource("3_78awf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -363,5 +387,6 @@ target_position = Vector3(0, 0, -6)
 debug_shape_custom_color = Color(0.596078, 0.247059, 0.0509804, 1)
 
 [connection signal="timeout" from="HUD/dialogueBox/Timer" to="HUD/dialogueBox" method="_on_timer_timeout"]
+[connection signal="blackoutDone" from="HUD/blackoutOverlay" to="HUD/dialogueBox" method="_on_blackout_done"]
 [connection signal="game_over" from="GameState" to="HUD/gameOver" method="_on_game_state_game_over"]
-[connection signal="phase_changed" from="GameState" to="HUD/dialogueBox" method="_on_game_state_phase_changed"]
+[connection signal="timeout" from="GameState/Timer" to="GameState" method="transition_to_judgement"]

@@ -32,7 +32,7 @@ func _input(event):
 
 func _physics_process(_delta):
 	# Movement
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	var input_dir = Input.get_vector("left", "right", "backward", "forward")
 	
 	var forward = -camera.global_transform.basis.z
 	forward.y = 0
@@ -91,9 +91,6 @@ func handle_interaction():
 			collider.get_parent().listen()
 
 func handle_accusation():
-	if game_state.current_phase != game_state.Phase.JUDGEMENT:
-		return
-		
 	if !ray.is_colliding():
 		return
 		

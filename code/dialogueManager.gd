@@ -1,4 +1,4 @@
-extends Node
+extends TextureRect
 
 @onready var dialogueLine: Label = $Line
 @onready var person: Label = $Person
@@ -7,7 +7,7 @@ extends Node
 @export var DialogueTimeout := 5.0
 
 func _ready():
-	$".".hide()
+	hide()
 	for clue in get_tree().get_nodes_in_group("clues"):
 		clue.clueInspected.connect(_on_clue_collected)
 	for character in get_tree().get_nodes_in_group("characters"):
@@ -16,14 +16,13 @@ func _ready():
 func show_dialogue(character_name: String, line: String):
 	person.text=character_name
 	dialogueLine.text = line
-	$".".show()
+	show()
 	timer.start(DialogueTimeout)
 
 func _on_timer_timeout():
-	$".".hide()
+	hide()
 
-
-func _on_game_state_phase_changed(new_phase: int) -> void:
+func _on_blackout_done() -> void:
 	show_dialogue("Me","what happened? \nwhere am i? \nanyways I only remember three of you being there WHICH ONE IS FAKE")
 
 func _on_clue_collected(clue_data: Dictionary)->void:
