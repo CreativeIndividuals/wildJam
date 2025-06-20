@@ -58,45 +58,47 @@ func check_interaction_target():
 	if !ray.is_colliding():
 		clear_interaction_target()
 		return
+	var target = ray.get_collider()
 
-	var parent = ray.get_collider().get_parent()
-	if parent is Interractable:
-		if current_interactable != parent:
-			if current_interactable:
+	if target.is_in_group("clues"):
+		if current_interactable != target:
+			# Disable highlight on the previous clue
+			if is_instance_valid(current_interactable):
 				current_interactable.disable_highlight()
-			current_interactable = parent
+			current_interactable = target
 			current_interactable.enable_highlight()
 		show_interaction_prompt("Press E to inspect")
-	elif parent.is_in_group("characters"):
+	elif target.is_in_group("characters"):
+		# Disable highlight if we were highlighting a clue
+		if is_instance_valid(current_interactable):
+			current_interactable.disable_highlight()
+			current_interactable = null
 		show_interaction_prompt("E: Listen\nQ: Accuse")
 	else:
-		if current_interactable == parent:
-			clear_interaction_target()
-		else:
-			interaction_text.visible = false
+		clear_interaction_target()
 
 func handle_interaction():
 	if !ray.is_colliding():
 		return
-		
-	var collider = ray.get_collider()
-	if !is_instance_valid(collider):
-		return
-	
+
+	var target = ray.get_collider()
+	var parent = target
+	if !parent.is_in_group("clues") and !parent.is_in_group("characters"):
+		parent = target.get_parent()
+
 	if game_state.current_phase == game_state.Phase.RESEARCH:
-		if collider.get_parent() is Interractable:
-			collider.get_parent().interact()
+		if parent.is_in_group("clues"):
+			parent.interact()
 	elif game_state.current_phase == game_state.Phase.JUDGEMENT:
-		if collider.get_parent().is_in_group("characters"):
-			collider.get_parent().listen()
+		if parent.is_in_group("characters"):
+			parent.listen()
 
 func handle_accusation():
 	if !ray.is_colliding():
 		return
-		
-	var collider = ray.get_collider()
-	if collider.is_in_group("characters"):
-		game_state.make_accusation(collider)
+	var target = ray.get_collider()
+	if target.is_in_group("characters"):
+		game_state.make_accusation(target)
 
 func show_interaction_prompt(text: String):
 	interaction_text.text = text

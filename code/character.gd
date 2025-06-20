@@ -4,6 +4,8 @@ extends RigidBody3D
 @export var character_name: String
 @export_multiline var dialogue_lines: Array[String] = []
 
+signal spoke(char,text)
+
 var dialogue_manager: Node
 
 func _ready():
@@ -12,7 +14,4 @@ func _ready():
 	dialogue_manager = %dialogueBox
 
 func listen():
-	if dialogue_lines.is_empty():
-		dialogue_manager.show_dialogue(character_name, "...")
-		return
-	dialogue_manager.show_dialogue(character_name, dialogue_lines[randi() % dialogue_lines.size()])
+	spoke.emit(character_name, dialogue_lines[randi() % dialogue_lines.size()])

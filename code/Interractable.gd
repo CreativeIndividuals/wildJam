@@ -24,6 +24,7 @@ func _setup_highlight_material():
 
 func interact():
 	clueInspected.emit({"id":clueID,"description":description})
+	%audioManager.play_sfx("interact")
 
 func enable_highlight():
 	$MeshInstance3D.material_overlay = highlight_material

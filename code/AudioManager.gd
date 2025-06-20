@@ -1,6 +1,9 @@
 extends Node
 
-@export_multiline var effects :Dictionary[String,String] = {"blackout":"test"}
+@export_multiline var effects :Dictionary[String,String] = \
+{"blackout":"?",
+ "interact":"?",
+ "speak":"?"}
 
 var ost_player: AudioStreamPlayer
 var sfx_player: AudioStreamPlayer
