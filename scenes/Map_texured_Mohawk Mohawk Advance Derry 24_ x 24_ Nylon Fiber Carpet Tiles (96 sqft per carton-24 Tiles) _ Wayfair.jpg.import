@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://pgwsnyd31ip1"
+path.s3tc="res://.godot/imported/Map_texured_Mohawk Mohawk Advance Derry 24_ x 24_ Nylon Fiber Carpet Tiles (96 sqft per carton-24 Tiles) _ Wayfair.jpg-c4d8a32311b93df7edd36eb0ebf0e1b8.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "a84d90c0d7ec90a2df112c0d63ea2aff"
+}
+
+[deps]
+
+source_file="res://scenes/Map_texured_Mohawk Mohawk Advance Derry 24_ x 24_ Nylon Fiber Carpet Tiles (96 sqft per carton-24 Tiles) _ Wayfair.jpg"
+dest_files=["res://.godot/imported/Map_texured_Mohawk Mohawk Advance Derry 24_ x 24_ Nylon Fiber Carpet Tiles (96 sqft per carton-24 Tiles) _ Wayfair.jpg-c4d8a32311b93df7edd36eb0ebf0e1b8.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
