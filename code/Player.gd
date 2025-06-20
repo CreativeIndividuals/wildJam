@@ -5,7 +5,7 @@ const MOUSE_SENS = 0.002
 
 @onready var camera = $Camera3D
 @onready var ray = $Camera3D/interactRange
-@onready var interaction_text = %HUD/Interact
+@onready var interaction_text = %Interact
 @onready var game_state = %GameState
 var current_interactable:Interractable = null
 
