@@ -1,23 +1,38 @@
 extends Node
 
-@export_multiline var effects :Dictionary[String,String] = \
-{"blackout":"?",
- "interact":"?",
- "speak":"?"}
+@export var effects : Dictionary[String,String]
 
-var ost_player: AudioStreamPlayer
-var sfx_player: AudioStreamPlayer
+@onready var ost: AudioStreamPlayer = $ost
+@onready var sfx: AudioStreamPlayer = $sfx
+@onready var walk: AudioStreamPlayer = $walk
 
-func _ready():
-	ost_player=$ost
-	sfx_player=$sfx
+func _ready() -> void:
+	for character in get_tree().get_nodes_in_group("characters"):
+		character.spoke.connect(play_speech)
+
+func play_speech(character,dialogue):
+	play_sfx("speech_"+character)
 
 func play_ost():
-	ost_player.play()
+	ost.play()
 
 func stop_ost():
-	ost_player.stop()
+	ost.stop()
 
-func play_sfx(effect:String):
-	sfx_player.stream.resource_path = effects[effect]
-	sfx_player.play()
+func play_sfx(effect: String):
+	var path = effects.get(effect, "")
+	if path == "":
+		print("No such effect: ", effect)
+		return
+	var stream = load(path)
+	if not stream:
+		print("Failed to load SFX at: ", path)
+		return
+	sfx.stream = stream
+	sfx.play()
+
+func _on_player_walk_changed(walking: bool) -> void:
+	if walking:
+		walk.play()
+	else:
+		walk.stop()

@@ -9,6 +9,8 @@ const MOUSE_SENS = 0.002
 @onready var game_state = %GameState
 var current_interactable:Interractable = null
 
+signal walkChanged(walking:bool)
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	interaction_text.visible = false
@@ -30,8 +32,9 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED
 
+var was_walking = false
+
 func _physics_process(_delta):
-	# Movement
 	var input_dir = Input.get_vector("left", "right", "backward", "forward")
 	
 	var forward = -camera.global_transform.basis.z
@@ -43,8 +46,13 @@ func _physics_process(_delta):
 	right = right.normalized()
 	
 	var direction = (forward * input_dir.y + right * input_dir.x)
+	var walking = direction.length() > 0.01  # "0.01" avoids float issues
 	
-	if direction:
+	if walking != was_walking:
+		walkChanged.emit(walking)
+		was_walking = walking
+
+	if walking:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
@@ -66,6 +74,7 @@ func check_interaction_target():
 			if is_instance_valid(current_interactable):
 				current_interactable.disable_highlight()
 			current_interactable = target
+			%audioManager.play_sfx("clue hover")
 			current_interactable.enable_highlight()
 		show_interaction_prompt("Press E to inspect")
 	elif target.is_in_group("characters"):

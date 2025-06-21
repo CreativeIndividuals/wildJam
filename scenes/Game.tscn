@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ds3a131765w7i"]
+[gd_scene load_steps=30 format=3 uid="uid://ds3a131765w7i"]
 
 [ext_resource type="Script" uid="uid://cq5d5yawdbkcw" path="res://code/Interractable.gd" id="1_400sg"]
 [ext_resource type="Script" uid="uid://chb55jucsm5ad" path="res://code/GameState.gd" id="2_cpr0p"]
@@ -11,8 +11,9 @@
 [ext_resource type="Script" uid="uid://c4rw1c2y6urot" path="res://code/dialogueManager.gd" id="4_aug50"]
 [ext_resource type="Script" uid="uid://dk01cgbjy561f" path="res://code/gameOver.gd" id="5_kiw3p"]
 [ext_resource type="Script" uid="uid://dwunflmmaap7e" path="res://code/AudioManager.gd" id="6_3xj3m"]
-[ext_resource type="AudioStream" uid="uid://rhj1o1yi7xgv" path="res://audio/music/placeholder.mp3" id="7_mcffj"]
 [ext_resource type="Script" uid="uid://dwtdotwiv0gd4" path="res://code/BlackoutManager.gd" id="9_g4kob"]
+[ext_resource type="AudioStream" uid="uid://xnfp0jbq58s5" path="res://audio/music/General Theme.wav" id="11_2rd6h"]
+[ext_resource type="AudioStream" uid="uid://b8g15jqvygvmm" path="res://audio/Sfx/walk-cycle-2.wav" id="12_7ua8r"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x5vcc"]
 
@@ -22,6 +23,8 @@
 albedo_color = Color(0.113725, 0.360784, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x5vcc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ua8r"]
 
 [sub_resource type="Skin" id="Skin_2rd6h"]
 resource_name = "book"
@@ -34,6 +37,8 @@ resource_name = "book"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxkoi"]
 albedo_color = Color(0.572549, 0.278431, 0.301961, 1)
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_2rd6h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ua8r"]
 shader = ExtResource("4_2rd6h")
@@ -86,7 +91,7 @@ description = "it's my mothers and says great things about me"
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue1"]
-skin = SubResource("Skin_2rd6h")
+mesh = SubResource("BoxMesh_7ua8r")
 
 [node name="clue2" type="RigidBody3D" parent="Env/clues"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15664, 0.958167, 5.7256)
@@ -94,77 +99,117 @@ script = ExtResource("1_400sg")
 clueID = "drawing"
 description = "me and lil bro"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue2"]
+mesh = SubResource("BoxMesh_7ua8r")
+skin = SubResource("Skin_2rd6h")
+skeleton = NodePath("../../clue1")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue2"]
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="clue3" type="RigidBody3D" parent="Env/clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10076, 1.69814, 0)
 script = ExtResource("1_400sg")
 clueID = "sketchbook"
 description = "It's a sketch of a girl"
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue3"]
+mesh = SubResource("BoxMesh_7ua8r")
+skin = SubResource("Skin_2rd6h")
+skeleton = NodePath("../../clue1")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09016, 0)
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue4" type="RigidBody3D" parent="Env/clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29842, 0.860815, 2.40871)
 script = ExtResource("1_400sg")
 clueID = "cornflakes"
 description = "My favourite cornflakes.."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue4"]
+mesh = SubResource("BoxMesh_7ua8r")
+skin = SubResource("Skin_2rd6h")
+skeleton = NodePath("../../clue1")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09016, 0)
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue5" type="RigidBody3D" parent="Env/clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57072, 1.24483, -0.250698)
 script = ExtResource("1_400sg")
 clueID = "boardgame"
 description = "I used to play with my brother.."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue5"]
+mesh = SubResource("BoxMesh_7ua8r")
+skin = SubResource("Skin_2rd6h")
+skeleton = NodePath("../../clue1")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09016, 0)
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue6" type="RigidBody3D" parent="Env/clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79333, 3.69709, 0)
 script = ExtResource("1_400sg")
 clueID = "console"
 description = "I was good at that game.."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue6"]
+mesh = SubResource("BoxMesh_7ua8r")
+skin = SubResource("Skin_2rd6h")
+skeleton = NodePath("../../clue1")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09016, 0)
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue7" type="RigidBody3D" parent="Env/clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14257, 0.765576, -3.19368)
 script = ExtResource("1_400sg")
 clueID = "casseteplayer"
 description = "My favourite song..."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue7"]
+mesh = SubResource("BoxMesh_7ua8r")
+skin = SubResource("Skin_2rd6h")
+skeleton = NodePath("../../clue1")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09016, 0)
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue8" type="RigidBody3D" parent="Env/clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55297, 0)
 script = ExtResource("1_400sg")
 clueID = "easel"
 description = "I used to draw..."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue8"]
+mesh = SubResource("BoxMesh_7ua8r")
+skin = SubResource("Skin_2rd6h")
+skeleton = NodePath("../../clue1")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09016, 0)
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue9" type="RigidBody3D" parent="Env/clues"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04584, -2.42791)
 script = ExtResource("1_400sg")
 clueID = "baseballglove"
 description = "My baseballglove.."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue9"]
+mesh = SubResource("BoxMesh_7ua8r")
+skin = SubResource("Skin_2rd6h")
+skeleton = NodePath("../../clue1")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09016, 0)
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="characters" type="Node3D" parent="Env"]
@@ -230,6 +275,32 @@ skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="Map_texured" parent="Env" instance=ExtResource("3_2rd6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.569)
+
+[node name="audioManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_3xj3m")
+effects = Dictionary[String, String]({
+"blackout": "res://audio/Sfx/SFX_BlackOutFull.wav",
+"clue hover": "res://audio/Sfx/SFX_ClueHover.wav",
+"flip page": "res://audio/Sfx/SFX_Pages.wav",
+"speech_Brother": "res://audio/Sfx/SFX_Voice_Brother.wav",
+"speech_Father": "res://audio/Sfx/SFX_Voice_Impostor.wav",
+"speech_Girlfriend": "res://audio/Sfx/SFX_Voice_GirlFriend.wav",
+"speech_Mother": "res://audio/Sfx/SFX_Voice_Mother.wav"
+})
+
+[node name="ost" type="AudioStreamPlayer" parent="audioManager"]
+stream = ExtResource("11_2rd6h")
+bus = &"ost"
+
+[node name="sfx" type="AudioStreamPlayer" parent="audioManager"]
+stream = SubResource("AudioStreamWAV_2rd6h")
+bus = &"sfx"
+
+[node name="walk" type="AudioStreamPlayer" parent="audioManager"]
+stream = ExtResource("12_7ua8r")
+bus = &"sfx"
 
 [node name="HUD" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -442,21 +513,10 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("9_g4kob")
 
-[node name="audioManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("6_3xj3m")
-
-[node name="ost" type="AudioStreamPlayer" parent="audioManager"]
-stream = ExtResource("7_mcffj")
-bus = &"ost"
-
-[node name="sfx" type="AudioStreamPlayer" parent="audioManager"]
-bus = &"sfx"
-
 [node name="GameState" type="Node" parent="." node_paths=PackedStringArray("impostor_character")]
 unique_name_in_owner = true
 script = ExtResource("2_cpr0p")
-impostor_character = NodePath("../Env/characters/girlfriend")
+impostor_character = NodePath("../Env/characters/father")
 
 [node name="Timer" type="Timer" parent="GameState"]
 wait_time = 120.0
@@ -487,3 +547,4 @@ debug_shape_custom_color = Color(0.596078, 0.247059, 0.0509804, 1)
 [connection signal="blackoutDone" from="HUD/blackoutOverlay" to="HUD/dialogueBox" method="_on_blackout_done"]
 [connection signal="game_over" from="GameState" to="HUD/gameOver" method="_on_game_state_game_over"]
 [connection signal="timeout" from="GameState/Timer" to="GameState" method="transition_to_judgement"]
+[connection signal="walkChanged" from="Player" to="audioManager" method="_on_player_walk_changed"]

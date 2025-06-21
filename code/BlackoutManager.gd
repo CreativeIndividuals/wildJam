@@ -1,6 +1,6 @@
 extends ColorRect
 
-@export var duration:=2.0
+@export var duration:=5.0
 signal blackoutDone
 
 func _ready():
@@ -8,13 +8,13 @@ func _ready():
 	hide()
 
 func fade_out():
-	create_tween().tween_property($".", "color:a", 0.0, duration/2.0).connect(
+	create_tween().tween_property($".", "color:a", 0.0, duration).connect(
 		"finished", Callable(self, "_on_fade_out_complete")
 	)
 
 func play_blackout():
 	show()
-	#%audioManager.play_sfx("blackout")
+	%audioManager.play_sfx("blackout")
 	create_tween().tween_property($".", "color:a", 1.0, duration/2.0).connect(
 		"finished", Callable(self, "_on_fade_in_complete")
 	)
