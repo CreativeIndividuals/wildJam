@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://s7c4agwp0hir"
+path.s3tc="res://.godot/imported/sofas and armchair_Armchair_BaseColor.png-ef19d8ca940e4c437454b21fa0d3a499.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "d1467f9e94828aaacb73d4082a8392b9"
+}
+
+[deps]
+
+source_file="res://scenes/sofas and armchair_Armchair_BaseColor.png"
+dest_files=["res://.godot/imported/sofas and armchair_Armchair_BaseColor.png-ef19d8ca940e4c437454b21fa0d3a499.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

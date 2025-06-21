@@ -1,19 +1,27 @@
-[gd_scene load_steps=30 format=3 uid="uid://ds3a131765w7i"]
+[gd_scene load_steps=38 format=3 uid="uid://ds3a131765w7i"]
 
 [ext_resource type="Script" uid="uid://cq5d5yawdbkcw" path="res://code/Interractable.gd" id="1_400sg"]
+[ext_resource type="PackedScene" uid="uid://ce27720uko20k" path="res://scenes/drawer_table.glb" id="1_a8wo8"]
+[ext_resource type="PackedScene" uid="uid://bkblmla0t454v" path="res://scenes/sofas and armchair.glb" id="2_attvq"]
 [ext_resource type="Script" uid="uid://chb55jucsm5ad" path="res://code/GameState.gd" id="2_cpr0p"]
 [ext_resource type="Script" uid="uid://bimsnwhown4mg" path="res://code/character.gd" id="2_g4kob"]
 [ext_resource type="Texture2D" uid="uid://dfykxjiun5o4t" path="res://2d/crosshair.png" id="2_s0nni"]
 [ext_resource type="PackedScene" uid="uid://dacv34vmsdg42" path="res://scenes/Map_texured.glb" id="3_2rd6h"]
 [ext_resource type="Script" uid="uid://0sygf5n1lopq" path="res://code/Player.gd" id="3_78awf"]
 [ext_resource type="Texture2D" uid="uid://b52b5eobvljo5" path="res://2d/dialogueBox.png" id="3_aug50"]
+[ext_resource type="PackedScene" uid="uid://o7c4lacri20k" path="res://scenes/chair.glb" id="3_bneo8"]
 [ext_resource type="Shader" uid="uid://btbaaw0xejnf0" path="res://shaders/crt.gdshader" id="4_2rd6h"]
 [ext_resource type="Script" uid="uid://c4rw1c2y6urot" path="res://code/dialogueManager.gd" id="4_aug50"]
+[ext_resource type="PackedScene" uid="uid://diie2mxnebgrw" path="res://scenes/vhs music.glb" id="4_ocgqw"]
+[ext_resource type="PackedScene" uid="uid://cnvt7bpej58cb" path="res://scenes/kitchen.glb" id="4_r7sob"]
+[ext_resource type="PackedScene" uid="uid://b08hmx1ln6nrg" path="res://scenes/lamp.glb" id="5_attvq"]
 [ext_resource type="Script" uid="uid://dk01cgbjy561f" path="res://code/gameOver.gd" id="5_kiw3p"]
 [ext_resource type="Script" uid="uid://dwunflmmaap7e" path="res://code/AudioManager.gd" id="6_3xj3m"]
 [ext_resource type="Script" uid="uid://dwtdotwiv0gd4" path="res://code/BlackoutManager.gd" id="9_g4kob"]
 [ext_resource type="AudioStream" uid="uid://xnfp0jbq58s5" path="res://audio/music/General Theme.wav" id="11_2rd6h"]
 [ext_resource type="AudioStream" uid="uid://b8g15jqvygvmm" path="res://audio/Sfx/walk-cycle-2.wav" id="12_7ua8r"]
+[ext_resource type="PackedScene" uid="uid://bmpcoac2ecsx6" path="res://scenes/gaming.glb" id="20_jbgew"]
+[ext_resource type="PackedScene" uid="uid://c2s6nxvynr5th" path="res://scenes/monopoly.glb" id="21_a85ww"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x5vcc"]
 
@@ -74,6 +82,51 @@ transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 
 mesh = SubResource("QuadMesh_x5vcc")
 surface_material_override/0 = SubResource("StandardMaterial3D_t7bns")
 
+[node name="drawer_table" parent="Env/TemporaryGround" instance=ExtResource("1_a8wo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0037, -0.35382, -2.54549)
+
+[node name="drawer_table2" parent="Env/TemporaryGround" instance=ExtResource("1_a8wo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4838, 0, 4.132)
+
+[node name="sofas and armchair" parent="Env/TemporaryGround" instance=ExtResource("2_attvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2864, 0, 9.385)
+
+[node name="sofas and armchair2" parent="Env/TemporaryGround" instance=ExtResource("2_attvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1835, 0, -2.75897)
+
+[node name="chair2" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0189, 0, -6.60618)
+
+[node name="chair3" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8947, 0, 9.16244)
+
+[node name="chair4" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1203, 0, 3.4327)
+
+[node name="chair5" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0108, 0, 6.58183)
+
+[node name="chair6" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8732, 0, 6.14782)
+
+[node name="vhs music" parent="Env/TemporaryGround" instance=ExtResource("4_ocgqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5462, 0, 6.1121)
+
+[node name="vhs music2" parent="Env/TemporaryGround" instance=ExtResource("4_ocgqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2035, 0, -5.59349)
+
+[node name="lamp" parent="Env/TemporaryGround" instance=ExtResource("5_attvq")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 16.5979, -0.83, 8.0233)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/TemporaryGround/lamp"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 32.4777, 0)
+
+[node name="lamp2" parent="Env/TemporaryGround" instance=ExtResource("5_attvq")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 13.3075, -0.83, 8.0233)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/TemporaryGround/lamp2"]
+transform = Transform3D(17.1284, -10.3256, 0, 10.3256, 17.1284, 0, 0, 0, 20, -20.2918, 58.6819, 0)
+
 [node name="OmniLight3D" type="OmniLight3D" parent="Env"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05397, 3, -2.38295)
 omni_range = 28.144
@@ -108,7 +161,7 @@ skeleton = NodePath("../../clue1")
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="clue3" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10076, 1.69814, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10076, 1.69814, 3.47744)
 script = ExtResource("1_400sg")
 clueID = "sketchbook"
 description = "It's a sketch of a girl"
@@ -216,7 +269,7 @@ shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="mother" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41485, 0.958167, 5.7256)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.57972, 2.11762, 7.64821)
 script = ExtResource("2_g4kob")
 character_name = "Mother"
 dialogue_lines = Array[String](["You always kept your sketchbook close, drawing your dreams and fears", "You never liked hugs, but I held you close when you needed it.", "Your favorite cornflakes is still in the kitchen cabinet."])
@@ -231,7 +284,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="father" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9492, 0.958167, 5.7256)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9492, 0.958167, 8.35339)
 script = ExtResource("2_g4kob")
 character_name = "Father"
 dialogue_lines = Array[String](["Remember when we went fishing by the lake last summer?", "That old baseball glove is still in the closet, dusty but ready.", "You used to stay up late watching cartoons with me on weekends."])
@@ -275,7 +328,10 @@ skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="Map_texured" parent="Env" instance=ExtResource("3_2rd6h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.569)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3672, -0.317838, -2.68703)
+
+[node name="kitchen" parent="Env" instance=ExtResource("4_r7sob")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4488, 0, -2.48591)
 
 [node name="audioManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -524,7 +580,7 @@ one_shot = true
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3089, 1.3908, -7.54612)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92863, 1.3908, -17.8786)
 script = ExtResource("3_78awf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -542,6 +598,12 @@ environment = SubResource("Environment_cpr0p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0383968, -0.752247)
 target_position = Vector3(0, 0, -3)
 debug_shape_custom_color = Color(0.596078, 0.247059, 0.0509804, 1)
+
+[node name="gaming" parent="." instance=ExtResource("20_jbgew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.165, 0, -3.11004)
+
+[node name="monopoly" parent="." instance=ExtResource("21_a85ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3886, -0.300271, -2.21699)
 
 [connection signal="timeout" from="HUD/dialogueBox/Timer" to="HUD/dialogueBox" method="_on_timer_timeout"]
 [connection signal="blackoutDone" from="HUD/blackoutOverlay" to="HUD/dialogueBox" method="_on_blackout_done"]
