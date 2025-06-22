@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ds3a131765w7i"]
+[gd_scene load_steps=85 format=4 uid="uid://ds3a131765w7i"]
 
 [ext_resource type="Script" uid="uid://cq5d5yawdbkcw" path="res://code/Interractable.gd" id="1_400sg"]
 [ext_resource type="PackedScene" uid="uid://ce27720uko20k" path="res://scenes/drawer_table.glb" id="1_a8wo8"]
@@ -15,14 +15,28 @@
 [ext_resource type="Script" uid="uid://c4rw1c2y6urot" path="res://code/dialogueManager.gd" id="4_aug50"]
 [ext_resource type="PackedScene" uid="uid://diie2mxnebgrw" path="res://scenes/vhs music.glb" id="4_ocgqw"]
 [ext_resource type="PackedScene" uid="uid://cnvt7bpej58cb" path="res://scenes/kitchen.glb" id="4_r7sob"]
+[ext_resource type="PackedScene" uid="uid://q65fhsctoxyi" path="res://scenes/character_obj/cupboard.glb" id="5_1gdd5"]
 [ext_resource type="PackedScene" uid="uid://b08hmx1ln6nrg" path="res://scenes/lamp.glb" id="5_attvq"]
 [ext_resource type="Script" uid="uid://dk01cgbjy561f" path="res://code/gameOver.gd" id="5_kiw3p"]
 [ext_resource type="Script" uid="uid://dwunflmmaap7e" path="res://code/AudioManager.gd" id="6_3xj3m"]
+[ext_resource type="PackedScene" uid="uid://dgyv4hwfcnq1" path="res://scenes/character_obj/candle.glb" id="8_426vi"]
 [ext_resource type="Script" uid="uid://dwtdotwiv0gd4" path="res://code/BlackoutManager.gd" id="9_g4kob"]
+[ext_resource type="PackedScene" uid="uid://dta8tavw37jau" path="res://scenes/bed.glb" id="9_naigu"]
+[ext_resource type="PackedScene" uid="uid://ditt6wiviue7j" path="res://scenes/character_obj/table.glb" id="10_m1oc7"]
 [ext_resource type="AudioStream" uid="uid://xnfp0jbq58s5" path="res://audio/music/General Theme.wav" id="11_2rd6h"]
+[ext_resource type="PackedScene" uid="uid://b3744jshfh21p" path="res://scenes/easel.glb" id="11_kbe8o"]
 [ext_resource type="AudioStream" uid="uid://b8g15jqvygvmm" path="res://audio/Sfx/walk-cycle-2.wav" id="12_7ua8r"]
+[ext_resource type="Texture2D" uid="uid://ceqyhke74y4n" path="res://scenes/kitchen_cereal.png" id="12_426vi"]
+[ext_resource type="Texture2D" uid="uid://cdld6v3knvqhg" path="res://scenes/tv.png" id="12_m1oc7"]
+[ext_resource type="PackedScene" uid="uid://brulhoccr5p56" path="res://scenes/clues/basketball.glb" id="13_1gdd5"]
+[ext_resource type="Texture2D" uid="uid://c31s04oiykmdi" path="res://scenes/girl_final.png" id="13_kbe8o"]
+[ext_resource type="Texture2D" uid="uid://bwelro2epnlnu" path="res://scenes/fishing.png" id="14_kbe8o"]
+[ext_resource type="ArrayMesh" uid="uid://caij7ruyxdu8f" path="res://scenes/character_obj/character.obj" id="15_cxum0"]
+[ext_resource type="PackedScene" uid="uid://c7t8ydpxp23ds" path="res://scenes/character_obj/piano set.glb" id="20_1fiys"]
 [ext_resource type="PackedScene" uid="uid://bmpcoac2ecsx6" path="res://scenes/gaming.glb" id="20_jbgew"]
 [ext_resource type="PackedScene" uid="uid://c2s6nxvynr5th" path="res://scenes/monopoly.glb" id="21_a85ww"]
+[ext_resource type="PackedScene" uid="uid://sn4711wyx7kw" path="res://scenes/roof.glb" id="21_m2g6u"]
+[ext_resource type="PackedScene" uid="uid://bkyt0hfx5oci1" path="res://scenes/PauseMenu.tscn" id="37_7f8l2"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x5vcc"]
 
@@ -46,14 +60,70 @@ radius = 0.95
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x5vcc"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_7ua8r"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7f8l2"]
+albedo_texture = ExtResource("12_m1oc7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cxum0"]
+material = SubResource("StandardMaterial3D_7f8l2")
+
+[sub_resource type="Skin" id="Skin_1fiys"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cxum0"]
+albedo_texture = ExtResource("13_kbe8o")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1fiys"]
 
 [sub_resource type="Skin" id="Skin_2rd6h"]
 resource_name = "book"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2g6u"]
+albedo_texture = ExtResource("14_kbe8o")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_27c7x"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_2rd6h"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_t7bns"]
+[sub_resource type="PointMesh" id="PointMesh_jai3c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auei2"]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("12_426vi")
+roughness = 0.4
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_46fi2"]
+_surfaces = [{
+"aabb": AABB(-0.284445, -1.39166, -1, 0.56889, 2.78331, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAwACAAEAAAAEAAEAAwAFAAIABQAAAAIABgAEAAAABQAGAAAABwABAAQABwADAAEABgAHAAQABQADAAcABQAHAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAAAAP////8AAAAA//8AAAAAAAAAAP//AAD///////8AAAAAAAAAAAAA//8AAAAAAAD//wAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j8px8"]
+resource_name = "kitchen_Cube_042"
+_surfaces = [{
+"aabb": AABB(-0.284445, -1.39166, -1, 0.56889, 2.78331, 2),
+"attribute_data": PackedByteArray("DcAQp0SO7pcNwO6XRI4Qp0SOGPEbgBCnRI4QpxuAGPH//xjxNs4Qp///EKc2zhjxS7///waPU/FLv1PxBo///w3AGPFEjhCnDcAQp0SOGPE2zhjxDcAQpzbOEKcNwBjx"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_auei2"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(2.00134, 1.87297, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("/////wAAVNUAAP////9U1QAA//8AAFTV////////VNX//wAA//8AgAAA/////wCA////////AIAAAAAA//8AgAAAAAD///+/AAD//wAA/78AAP//////vwAAAAAAAP+/AAAAAAAAVNX//wAA//9U1f//AAAAAFTVAAAAAP//VNX//wAAAAD/v/////////+//////wAA/7///wAA////vwAAAAAAAP///////wAA//8AAP//AAD/////AAAAAP//VNWqKlTVqipU1aoqVNWqKv9/////f////3////9/////f/7//3/+//9//v//f/7/VFVVVVRVVFVUVVVVVFVUVf9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_46fi2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kbe8o"]
 
 [sub_resource type="Skin" id="Skin_tu7fu"]
 
@@ -174,9 +244,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.125, -0.35382, -5.54385)
 [node name="drawer_table2" parent="Env/Ground" instance=ExtResource("1_a8wo8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4838, -0.613085, 4.132)
 
-[node name="sofas and armchair" parent="Env/Ground" instance=ExtResource("2_attvq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2864, -0.427162, 9.385)
-
 [node name="sofas and armchair2" parent="Env/Ground" instance=ExtResource("2_attvq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1835, -0.389401, -2.75897)
 
@@ -194,6 +261,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0108, -0.488993, 6.58183)
 
 [node name="chair6" parent="Env/Ground" instance=ExtResource("3_bneo8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8732, -0.581626, 6.14782)
+
+[node name="cupboard" parent="Env/Ground" instance=ExtResource("5_1gdd5")]
+transform = Transform3D(0.0736386, 0, 0.997285, 0, 1, 0, -0.997285, 0, 0.0736386, 10.5468, -0.562902, -1.34984)
 
 [node name="vhs music" parent="Env/Ground" instance=ExtResource("4_ocgqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.251, -0.375, 6.402)
@@ -227,28 +297,41 @@ spot_angle = 82.36
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -4.16693, 26.9942, 5.55316)
 mesh = SubResource("CapsuleMesh_jbgew")
 
+[node name="candle" parent="Env/Ground" instance=ExtResource("8_426vi")]
+transform = Transform3D(0.998555, 0.0537477, 0, -0.0536466, 0.996677, -0.0612924, -0.00329433, 0.0612038, 0.99812, 29.5606, -1.0718, 1.01504)
+
+[node name="bed2" parent="Env/Ground" instance=ExtResource("9_naigu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9521, -0.381571, -2.93386)
+
+[node name="table" parent="Env/Ground" instance=ExtResource("10_m1oc7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7499, 0, 6.67982)
+
 [node name="clues" type="Node3D" parent="Env"]
 
 [node name="clue1" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.958167, 5.7256)
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 7.69687, 0.132677, -5.72796)
 script = ExtResource("1_400sg")
-clueID = "dairy"
-description = "it's my mothers and says great things about me"
+clueID = "drawing"
+description = "me and lil bro"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue1"]
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue1"]
-mesh = SubResource("BoxMesh_7ua8r")
+material_override = SubResource("StandardMaterial3D_7f8l2")
+mesh = SubResource("PlaneMesh_cxum0")
+skin = SubResource("Skin_1fiys")
 
 [node name="clue2" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15664, 0.958167, 5.7256)
+transform = Transform3D(-0.00188477, 0.419317, 0.0238684, 0.0330086, 0.0239427, -0.418016, -0.418697, 3.74146e-10, -0.0330624, 6.75972, 1.70598, 5.726)
+freeze = true
 script = ExtResource("1_400sg")
-clueID = "drawing"
-description = "me and lil bro"
+clueID = "sketch"
+description = "It's a sketch of mary (my girlfriend)"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue2"]
-mesh = SubResource("BoxMesh_7ua8r")
+material_override = SubResource("StandardMaterial3D_cxum0")
+mesh = SubResource("PlaneMesh_1fiys")
 skin = SubResource("Skin_2rd6h")
 skeleton = NodePath("../../clue1")
 
@@ -256,14 +339,19 @@ skeleton = NodePath("../../clue1")
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="clue3" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.10076, 1.69814, 3.47744)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9024, 1.69814, 3.47744)
+mass = 0.001
+gravity_scale = 0.72
+freeze = true
 script = ExtResource("1_400sg")
-clueID = "sketchbook"
-description = "It's a sketch of a girl"
+clueID = "painting"
+description = "It's the painting of when me and dad used to go fishing..f"
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue3"]
-mesh = SubResource("BoxMesh_7ua8r")
+transform = Transform3D(-0.038053, -0.417614, 0.0234555, 0.0282563, -0.0260652, -0.418237, 0.417317, -0.0363152, 0.0304574, -0.0246983, -0.230402, -0.189557)
+material_override = SubResource("StandardMaterial3D_m2g6u")
+mesh = SubResource("PlaneMesh_27c7x")
 skin = SubResource("Skin_2rd6h")
 skeleton = NodePath("../../clue1")
 
@@ -271,29 +359,34 @@ skeleton = NodePath("../../clue1")
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue4" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.29842, 0.860815, 2.40871)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6069, 0.920819, -17.9806)
 script = ExtResource("1_400sg")
 clueID = "cornflakes"
 description = "My favourite cornflakes.."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue4"]
-mesh = SubResource("BoxMesh_7ua8r")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.18069, 0, -2.81561)
+mesh = SubResource("PointMesh_jai3c")
 skin = SubResource("Skin_2rd6h")
 skeleton = NodePath("../../clue1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue4"]
 shape = SubResource("BoxShape3D_2rd6h")
 
+[node name="corn flakes" type="MeshInstance3D" parent="Env/clues/clue4"]
+transform = Transform3D(0, 0.128373, -1.6834e-08, 0.128373, 2.20752e-15, 1.6834e-08, 1.6834e-08, -1.6834e-08, -0.128373, -0.0632668, 0.487732, 0.38512)
+mesh = SubResource("ArrayMesh_j8px8")
+skeleton = NodePath("")
+
 [node name="clue5" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57072, 1.24483, -0.250698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6538, 0.689717, 2.56329)
 script = ExtResource("1_400sg")
 clueID = "boardgame"
 description = "I used to play with my brother.."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue5"]
-mesh = SubResource("BoxMesh_7ua8r")
 skin = SubResource("Skin_2rd6h")
 skeleton = NodePath("../../clue1")
 
@@ -301,14 +394,13 @@ skeleton = NodePath("../../clue1")
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue6" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.79333, 3.69709, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.01115, 0.641859, -7.09488)
 script = ExtResource("1_400sg")
 clueID = "console"
 description = "I was good at that game.."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue6"]
-mesh = SubResource("BoxMesh_7ua8r")
 skin = SubResource("Skin_2rd6h")
 skeleton = NodePath("../../clue1")
 
@@ -316,14 +408,14 @@ skeleton = NodePath("../../clue1")
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue7" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14257, 0.765576, -3.19368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.10116, 0.765576, -1.31206)
 script = ExtResource("1_400sg")
 clueID = "casseteplayer"
 description = "My favourite song..."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue7"]
-mesh = SubResource("BoxMesh_7ua8r")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.262349, 0, 0)
 skin = SubResource("Skin_2rd6h")
 skeleton = NodePath("../../clue1")
 
@@ -331,29 +423,35 @@ skeleton = NodePath("../../clue1")
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue8" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55297, 0)
+transform = Transform3D(-0.709128, 0, 0.70508, 0, 1, 0, -0.70508, 0, -0.709128, 16.3723, 2.43551, 6.47016)
 script = ExtResource("1_400sg")
 clueID = "easel"
 description = "I used to draw..."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
+[node name="easel" parent="Env/clues/clue8" instance=ExtResource("11_kbe8o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0657, -2.80686, -7.86472)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue8"]
-mesh = SubResource("BoxMesh_7ua8r")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.80434)
 skin = SubResource("Skin_2rd6h")
 skeleton = NodePath("../../clue1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue8"]
-shape = SubResource("BoxShape3D_2rd6h")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0776492, -1.62279, -0.0426456)
+shape = SubResource("BoxShape3D_kbe8o")
 
 [node name="clue9" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04584, -2.42791)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3614, 0.681813, 5.12042)
 script = ExtResource("1_400sg")
-clueID = "baseballglove"
-description = "My baseballglove.."
+clueID = "basketball"
+description = "My basketball..."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
+[node name="basketball" parent="Env/clues/clue9" instance=ExtResource("13_1gdd5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.517426, -1.6831, 0.690196)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue9"]
-mesh = SubResource("BoxMesh_7ua8r")
 skin = SubResource("Skin_2rd6h")
 skeleton = NodePath("../../clue1")
 
@@ -364,7 +462,7 @@ shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="mother" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.57972, 0.744779, 7.64821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.17105, 0.614818, 8.92968)
 script = ExtResource("2_g4kob")
 character_name = "Mother"
 dialogue_lines = Array[String](["You always kept your sketchbook close, drawing your dreams and fears", "You never liked hugs, but I held you close when you needed it.", "Your favorite cornflakes is still in the kitchen cabinet."])
@@ -373,43 +471,48 @@ dialogue_lines = Array[String](["You always kept your sketchbook close, drawing 
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/mother"]
-mesh = SubResource("BoxMesh_t7bns")
+transform = Transform3D(-0.0617976, 0, -0.998089, 0, 1, 0, 0.998089, 0, -0.0617976, 0.0197983, -0.937525, 0)
+mesh = ExtResource("15_cxum0")
 skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="father" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9492, 0.958167, 8.35339)
+transform = Transform3D(0.160088, 0, -0.987103, 0, 1, 0, 0.987103, 0, 0.160088, 10.6479, 0.57194, 10.4341)
 script = ExtResource("2_g4kob")
 character_name = "Father"
 dialogue_lines = Array[String](["Remember when we went fishing by the lake last summer?", "That old baseball glove is still in the closet, dusty but ready.", "You used to stay up late watching cartoons with me on weekends."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/father"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50638, 0, -0.625537)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/father"]
-mesh = SubResource("BoxMesh_t7bns")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48837, -0.871064, -0.522599)
+mesh = ExtResource("15_cxum0")
 skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="brother" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2231, 0.958167, 5.7256)
+transform = Transform3D(0.999812, 0, -0.0193719, 0, 1, 0, 0.0193719, 0, 0.999812, 2.93983, 0.958167, -3.47875)
 script = ExtResource("2_g4kob")
 character_name = "Brother"
 dialogue_lines = Array[String](["Remember that Moonpoly game where you flipped the board? Classic.", "I'm the one who made you laugh when things got rough", "You still can't beat me at video games, even after all this time."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/brother"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88947, 0, 0.164079)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/brother"]
-mesh = SubResource("BoxMesh_t7bns")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.50992, -1.19486, 0.22614)
+mesh = ExtResource("15_cxum0")
 skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="girlfriend" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1489, 0.958167, 5.7256)
+transform = Transform3D(0.96524, 0, -0.261364, 0, 1, 0, 0.261364, 0, 0.96524, 7.56566, 0.958167, 3.76764)
 script = ExtResource("2_g4kob")
 character_name = "Girlfriend"
 dialogue_lines = Array[String](["You sketched me when you thought I wasn't looking.", "Your favorite song still plays in my head from that night", "I still remember that rainy night."])
@@ -418,7 +521,8 @@ dialogue_lines = Array[String](["You sketched me when you thought I wasn't looki
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/girlfriend"]
-mesh = SubResource("BoxMesh_t7bns")
+transform = Transform3D(-0.53933, 0, -0.842095, 0, 1, 0, 0.842095, 0, -0.53933, -0.425591, -1.25445, 0.136948)
+mesh = ExtResource("15_cxum0")
 skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
@@ -443,6 +547,9 @@ spot_angle_attenuation = 0.277392
 
 [node name="kitchen" parent="Env" instance=ExtResource("4_r7sob")]
 transform = Transform3D(1, 0, 0, 0, 0.895, 0, 0, 0, 1, 12.39, 0, -2.681)
+
+[node name="corn flakes" parent="Env/kitchen" index="0"]
+transform = Transform3D(0, 0.128373, -1.6834e-08, 0.128373, 2.20752e-15, 1.6834e-08, 1.6834e-08, -1.6834e-08, -0.128373, -1.69368, 1.54534, -14.8792)
 
 [node name="monopoly" parent="Env" instance=ExtResource("21_a85ww")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3886, -0.300271, -2.21699)
@@ -623,6 +730,9 @@ spot_attenuation = 0.5
 spot_angle = 90.0
 spot_angle_attenuation = 2.63902
 
+[node name="piano set" parent="Env/walls" instance=ExtResource("20_1fiys")]
+transform = Transform3D(-0.997704, 0, 0.0677193, 0, 1, 0, -0.0677193, 0, -0.997704, 9.32006, -0.56439, 18.5307)
+
 [node name="objects" type="StaticBody3D" parent="Env"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/objects"]
@@ -642,7 +752,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.49999, 0.678613, -1.0828)
 shape = SubResource("BoxShape3D_jai3c")
 
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="Env/objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4254, 0.457299, 10.9435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7793, 0.457299, 10.9435)
 shape = SubResource("BoxShape3D_1gdd5")
 
 [node name="CollisionShape3D13" type="CollisionShape3D" parent="Env/objects"]
@@ -688,6 +798,9 @@ shape = SubResource("BoxShape3D_m1oc7")
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Env/objects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3923, 1.12008, 10.0249)
 shape = SubResource("BoxShape3D_m1oc7")
+
+[node name="roof" parent="Env" instance=ExtResource("21_m2g6u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.4743, -0.28789, -2.82388)
 
 [node name="audioManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -958,8 +1071,18 @@ debug_shape_custom_color = Color(0.596078, 0.247059, 0.0509804, 1)
 [node name="OmniLight3D" type="OmniLight3D" parent="Player"]
 light_color = Color(0.999994, 0.562739, 0.307492, 1)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("37_7f8l2")]
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 3.0
+offset_bottom = 4.0
+
 [connection signal="timeout" from="HUD/dialogueBox/Timer" to="HUD/dialogueBox" method="_on_timer_timeout"]
 [connection signal="blackoutDone" from="HUD/blackoutOverlay" to="HUD/dialogueBox" method="_on_blackout_done"]
 [connection signal="game_over" from="GameState" to="HUD/gameOver" method="_on_game_state_game_over"]
 [connection signal="timeout" from="GameState/Timer" to="GameState" method="transition_to_judgement"]
 [connection signal="walkChanged" from="Player" to="audioManager" method="_on_player_walk_changed"]
+
+[editable path="Env/kitchen"]
