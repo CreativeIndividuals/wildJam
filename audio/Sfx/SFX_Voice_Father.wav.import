@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bq0y6sowkpwwc"
-path="res://.godot/imported/SFX_Voice_Impostor.wav-fa11a48ff157bc71616950312ddd5b39.sample"
+path="res://.godot/imported/SFX_Voice_Father.wav-5931aa7eadd6d9f1b063044ef095de51.sample"
 
 [deps]
 
-source_file="res://audio/Sfx/SFX_Voice_Impostor.wav"
-dest_files=["res://.godot/imported/SFX_Voice_Impostor.wav-fa11a48ff157bc71616950312ddd5b39.sample"]
+source_file="res://audio/Sfx/SFX_Voice_Father.wav"
+dest_files=["res://.godot/imported/SFX_Voice_Father.wav-5931aa7eadd6d9f1b063044ef095de51.sample"]
 
 [params]
 

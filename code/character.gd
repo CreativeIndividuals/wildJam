@@ -10,7 +10,6 @@ var dialogue_manager: Node
 
 func _ready():
 	add_to_group("characters")
-	# Get references
 	dialogue_manager = %dialogueBox
 
 func listen():

@@ -238,7 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0037, -0.35382, -2.54549)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1765, -0.35382, 6.52451)
 
 [node name="drawer_table4" parent="Env/Ground" instance=ExtResource("1_a8wo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.125, -0.35382, -5.54385)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4296, -0.35382, -5.54385)
 
 [node name="drawer_table2" parent="Env/Ground" instance=ExtResource("1_a8wo8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4838, -0.613085, 4.09376)
@@ -262,13 +262,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0108, -0.488993, 6.58183)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8732, -0.581626, 6.14782)
 
 [node name="cupboard" parent="Env/Ground" instance=ExtResource("5_1gdd5")]
-transform = Transform3D(0.0736386, 0, 0.997285, 0, 1, 0, -0.997285, 0, 0.0736386, 10.547, -0.763, -1.35)
+transform = Transform3D(0.0736386, 0, 0.997285, 0, 1, 0, -0.997285, 0, 0.0736386, 10.2728, -0.763, -1.35)
 
 [node name="vhs music" parent="Env/Ground" instance=ExtResource("4_ocgqw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.251, -0.375, 6.402)
 
 [node name="vhs music2" parent="Env/Ground" instance=ExtResource("4_ocgqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.203, -0.365, -5.738)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.4321, -0.365, -5.7813)
 
 [node name="lamp" parent="Env/Ground" instance=ExtResource("5_attvq")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 16.5979, 0.117242, 9.71084)
@@ -312,7 +312,7 @@ transform = Transform3D(0.0122657, 0.469639, 0.0137383, 0.0137017, 0.0133797, -0
 freeze = true
 script = ExtResource("1_400sg")
 clueID = "drawing"
-description = "me and lil bro"
+description = "Drawing of human and a shadow figure watching tv.."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/clues/clue1"]
 shape = SubResource("BoxShape3D_x5vcc")
@@ -345,7 +345,7 @@ gravity_scale = 0.72
 freeze = true
 script = ExtResource("1_400sg")
 clueID = "painting"
-description = "It's the painting of when me and dad used to go fishing..f"
+description = "It's the painting of when me and dad used to go fishing.."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue3"]
@@ -398,7 +398,7 @@ shape = SubResource("BoxShape3D_2rd6h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.01115, 0.641859, -7.16325)
 script = ExtResource("1_400sg")
 clueID = "console"
-description = "I was good at that game.."
+description = "I was not good at that game.."
 metadata/_custom_type_script = "uid://cq5d5yawdbkcw"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/clues/clue6"]
@@ -409,7 +409,7 @@ skeleton = NodePath("../../clue1")
 shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="clue7" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.08493, 0.765576, -1.31206)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98487, 0.765576, -0.965528)
 script = ExtResource("1_400sg")
 clueID = "casseteplayer"
 description = "My favourite song..."
@@ -466,7 +466,7 @@ shape = SubResource("BoxShape3D_2rd6h")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.27276, 0.614818, -0.0696154)
 script = ExtResource("2_g4kob")
-character_name = "???"
+character_name = "Mother"
 dialogue_lines = Array[String](["You always kept your sketchbook close, drawing your dreams and fears", "You never liked hugs, but I held you close when you needed it.", "Your favorite cornflakes is still in the kitchen countertop."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/mother"]
@@ -490,7 +490,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87466, 0, -4.69075)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/mother"]
-transform = Transform3D(-0.0617976, 0, -0.998089, 0, 1, 0, 0.998089, 0, -0.0617976, 0.0197983, -0.937525, 0)
+transform = Transform3D(0.94256, 0, 0.334037, 0, 1, 0, -0.334037, 0, 0.94256, 0.0197983, -0.828956, -0.311198)
 mesh = ExtResource("15_cxum0")
 skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
@@ -566,17 +566,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="father" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(0.160088, 0, -0.987103, 0, 1, 0, 0.987103, 0, 0.160088, 1.22237, 0.57194, 3.17517)
+transform = Transform3D(0.122909, 0, -0.992418, 0, 1, 0, 0.992418, 0, 0.122909, 0.884906, 0.57194, 2.55806)
 script = ExtResource("2_g4kob")
-character_name = "???"
+character_name = "Father"
 dialogue_lines = Array[String](["Remember when we went fishing by the lake last summer?", "That old baseball glove is still in the closet, dusty but ready.", "You used to stay up late watching cartoons with me on weekends."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/father"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49384, 0, -0.702855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52339, 0, -0.464249)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/father"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48837, -0.871064, -0.522599)
+transform = Transform3D(-0.264546, 0, 0.964373, 0, 1, 0, -0.964373, 0, -0.264546, -1.48837, -0.871064, -0.522599)
 mesh = ExtResource("15_cxum0")
 skin = SubResource("Skin_tu7fu")
 surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
@@ -585,11 +585,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 unique_name_in_owner = true
 transform = Transform3D(0.999812, 0, -0.0193719, 0, 1, 0, 0.0193719, 0, 0.999812, -7.88968, 0.927612, -2.44378)
 script = ExtResource("2_g4kob")
-character_name = "???"
+character_name = "Brother"
 dialogue_lines = Array[String](["Remember that Moonpoly game where you flipped the board? Classic.", "I'm the one who made you laugh when things got rough", "You still can't beat me at video games, even after all this time."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/brother"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.84423, 0, 0.513416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.29065, 0, 0.232118)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/brother"]
@@ -600,13 +600,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="girlfriend" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(0.96524, 0, -0.261364, 0, 1, 0, 0.261364, 0, 0.96524, 1.64487, 0.958167, 2.75702)
+transform = Transform3D(-0.9509, 0, 0.309499, 0, 1, 0, -0.309499, 0, -0.9509, 0.951142, 1.03296, 2.40219)
 script = ExtResource("2_g4kob")
-character_name = "???"
+character_name = "Girlfriend"
 dialogue_lines = Array[String](["You sketched me when you thought I wasn't looking.", "Your favorite song still plays in my head from that night", "I still remember that rainy night."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/girlfriend"]
-transform = Transform3D(1, 0, -2.68221e-07, 0, 1, 0, 2.68221e-07, 0, 1, 0.0366049, 0, -0.203097)
+transform = Transform3D(0.970498, 0, 0.241109, 0, 1, 0, -0.241109, 0, 0.970498, -0.27288, 0, 0.0277935)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/girlfriend"]
@@ -1026,7 +1026,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="gameOver" type="ColorRect" parent="HUD"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1113,17 +1112,17 @@ vertical_alignment = 1
 
 [node name="Button" type="Button" parent="HUD/gameOver"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -88.0
-offset_top = -96.0
-offset_right = 88.0
+anchors_preset = -1
+anchor_left = 0.495
+anchor_top = 0.853
+anchor_right = 0.495
+anchor_bottom = 0.853
+offset_left = -21.2401
+offset_top = -15.744
+offset_right = 20.7599
+offset_bottom = 15.256
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 64
+grow_vertical = 2
 text = "Quit"
 
 [node name="blackoutOverlay" type="ColorRect" parent="HUD"]
@@ -1140,6 +1139,7 @@ script = ExtResource("9_g4kob")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("37_7f8l2")]
+visible = false
 offset_left = 314.0
 offset_top = 11.0
 offset_right = 314.0
@@ -1182,6 +1182,7 @@ light_color = Color(0.999994, 0.562739, 0.307492, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.33379, -0.216543, -10.8228)
 
 [connection signal="timeout" from="HUD/dialogueBox/Timer" to="HUD/dialogueBox" method="_on_timer_timeout"]
+[connection signal="pressed" from="HUD/gameOver/Button" to="HUD/gameOver" method="_on_button_pressed"]
 [connection signal="blackoutDone" from="HUD/blackoutOverlay" to="HUD/dialogueBox" method="_on_blackout_done"]
 [connection signal="game_over" from="GameState" to="HUD/gameOver" method="_on_game_state_game_over"]
 [connection signal="timeout" from="GameState/Timer" to="GameState" method="transition_to_judgement"]
