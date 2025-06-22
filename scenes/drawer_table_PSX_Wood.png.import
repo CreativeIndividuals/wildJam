@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hfngk0ufrjbv"
 path.s3tc="res://.godot/imported/drawer_table_PSX_Wood.png-0e272ee782fd932ad579d15a7fd09df7.s3tc.ctex"
+path.etc2="res://.godot/imported/drawer_table_PSX_Wood.png-0e272ee782fd932ad579d15a7fd09df7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/drawer_table_PSX_Wood.png"
-dest_files=["res://.godot/imported/drawer_table_PSX_Wood.png-0e272ee782fd932ad579d15a7fd09df7.s3tc.ctex"]
+dest_files=["res://.godot/imported/drawer_table_PSX_Wood.png-0e272ee782fd932ad579d15a7fd09df7.s3tc.ctex", "res://.godot/imported/drawer_table_PSX_Wood.png-0e272ee782fd932ad579d15a7fd09df7.etc2.ctex"]
 
 [params]
 

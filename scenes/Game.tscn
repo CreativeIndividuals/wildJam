@@ -128,7 +128,7 @@ shadow_mesh = SubResource("ArrayMesh_46fi2")
 [sub_resource type="Skin" id="Skin_tu7fu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxkoi"]
-albedo_color = Color(0.572549, 0.278431, 0.301961, 1)
+albedo_color = Color(0, 0, 0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a85ww"]
 emission_enabled = true
@@ -309,7 +309,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7499, 0, 6.67982)
 [node name="clues" type="Node3D" parent="Env"]
 
 [node name="clue1" type="RigidBody3D" parent="Env/clues"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 7.69687, 0.132677, -5.72796)
+transform = Transform3D(-0.000492386, 0.332215, 0.332465, 0.0183832, 0.332225, -0.331947, -0.46964, 0.012656, -0.013342, 5.54678, 0.502515, -4.24751)
+freeze = true
 script = ExtResource("1_400sg")
 clueID = "drawing"
 description = "me and lil bro"
@@ -464,10 +465,11 @@ shape = SubResource("BoxShape3D_2rd6h")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.17105, 0.614818, 8.92968)
 script = ExtResource("2_g4kob")
-character_name = "Mother"
+character_name = "???"
 dialogue_lines = Array[String](["You always kept your sketchbook close, drawing your dreams and fears", "You never liked hugs, but I held you close when you needed it.", "Your favorite cornflakes is still in the kitchen cabinet."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/mother"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.72237, 0, -27.1883)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/mother"]
@@ -480,11 +482,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 unique_name_in_owner = true
 transform = Transform3D(0.160088, 0, -0.987103, 0, 1, 0, 0.987103, 0, 0.160088, 10.6479, 0.57194, 10.4341)
 script = ExtResource("2_g4kob")
-character_name = "Father"
+character_name = "???"
 dialogue_lines = Array[String](["Remember when we went fishing by the lake last summer?", "That old baseball glove is still in the closet, dusty but ready.", "You used to stay up late watching cartoons with me on weekends."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/father"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50638, 0, -0.625537)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.98289, 0, 8.47862)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/father"]
@@ -495,13 +497,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 
 [node name="brother" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(0.999812, 0, -0.0193719, 0, 1, 0, 0.0193719, 0, 0.999812, 2.93983, 0.958167, -3.47875)
+transform = Transform3D(0.999812, 0, -0.0193719, 0, 1, 0, 0.0193719, 0, 0.999812, 2.93983, 0.927612, -3.47875)
 script = ExtResource("2_g4kob")
-character_name = "Brother"
+character_name = "???"
 dialogue_lines = Array[String](["Remember that Moonpoly game where you flipped the board? Classic.", "I'm the one who made you laugh when things got rough", "You still can't beat me at video games, even after all this time."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/brother"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88947, 0, 0.164079)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6852, 0, -16.0172)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/brother"]
@@ -514,10 +516,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 unique_name_in_owner = true
 transform = Transform3D(0.96524, 0, -0.261364, 0, 1, 0, 0.261364, 0, 0.96524, 7.56566, 0.958167, 3.76764)
 script = ExtResource("2_g4kob")
-character_name = "Girlfriend"
+character_name = "???"
 dialogue_lines = Array[String](["You sketched me when you thought I wasn't looking.", "Your favorite song still plays in my head from that night", "I still remember that rainy night."])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Env/characters/girlfriend"]
+transform = Transform3D(1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, 1, 5.47105, 0, -23.3497)
 shape = SubResource("BoxShape3D_x5vcc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Env/characters/girlfriend"]
@@ -764,7 +767,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04522, 0.457299, -7.54213)
 shape = SubResource("BoxShape3D_1gdd5")
 
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="Env/objects"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9383, 0.678612, 8.9563)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.419, 0.678612, 8.9563)
 shape = SubResource("BoxShape3D_426vi")
 
 [node name="CollisionShape3D14" type="CollisionShape3D" parent="Env/objects"]
@@ -1038,6 +1041,14 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("9_g4kob")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("37_7f8l2")]
+offset_left = 314.0
+offset_top = 11.0
+offset_right = 314.0
+offset_bottom = 11.0
+
 [node name="GameState" type="Node" parent="." node_paths=PackedStringArray("impostor_character")]
 unique_name_in_owner = true
 script = ExtResource("2_cpr0p")
@@ -1070,14 +1081,6 @@ debug_shape_custom_color = Color(0.596078, 0.247059, 0.0509804, 1)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player"]
 light_color = Color(0.999994, 0.562739, 0.307492, 1)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("37_7f8l2")]
-offset_left = 3.0
-offset_top = 4.0
-offset_right = 3.0
-offset_bottom = 4.0
 
 [connection signal="timeout" from="HUD/dialogueBox/Timer" to="HUD/dialogueBox" method="_on_timer_timeout"]
 [connection signal="blackoutDone" from="HUD/blackoutOverlay" to="HUD/dialogueBox" method="_on_blackout_done"]

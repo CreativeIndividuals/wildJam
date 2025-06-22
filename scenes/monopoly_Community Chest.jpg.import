@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://be2vvdtyl7dci"
 path.s3tc="res://.godot/imported/monopoly_Community Chest.jpg-58ab1bf5d5e858e1858ad9ca89277a74.s3tc.ctex"
+path.etc2="res://.godot/imported/monopoly_Community Chest.jpg-58ab1bf5d5e858e1858ad9ca89277a74.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/monopoly_Community Chest.jpg"
-dest_files=["res://.godot/imported/monopoly_Community Chest.jpg-58ab1bf5d5e858e1858ad9ca89277a74.s3tc.ctex"]
+dest_files=["res://.godot/imported/monopoly_Community Chest.jpg-58ab1bf5d5e858e1858ad9ca89277a74.s3tc.ctex", "res://.godot/imported/monopoly_Community Chest.jpg-58ab1bf5d5e858e1858ad9ca89277a74.etc2.ctex"]
 
 [params]
 

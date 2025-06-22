@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddr248yul2u48"
 path.s3tc="res://.godot/imported/sofas and armchair_tile_tile_0060_01_preview.jpg-8d42d55ec707fa7126767984dfa0c72f.s3tc.ctex"
+path.etc2="res://.godot/imported/sofas and armchair_tile_tile_0060_01_preview.jpg-8d42d55ec707fa7126767984dfa0c72f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/sofas and armchair_tile_tile_0060_01_preview.jpg"
-dest_files=["res://.godot/imported/sofas and armchair_tile_tile_0060_01_preview.jpg-8d42d55ec707fa7126767984dfa0c72f.s3tc.ctex"]
+dest_files=["res://.godot/imported/sofas and armchair_tile_tile_0060_01_preview.jpg-8d42d55ec707fa7126767984dfa0c72f.s3tc.ctex", "res://.godot/imported/sofas and armchair_tile_tile_0060_01_preview.jpg-8d42d55ec707fa7126767984dfa0c72f.etc2.ctex"]
 
 [params]
 

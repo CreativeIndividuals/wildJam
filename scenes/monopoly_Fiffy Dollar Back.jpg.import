@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://vhx01qvb0gf1"
 path.s3tc="res://.godot/imported/monopoly_Fiffy Dollar Back.jpg-472dae33281c3d147696aeef3ccc2f1c.s3tc.ctex"
+path.etc2="res://.godot/imported/monopoly_Fiffy Dollar Back.jpg-472dae33281c3d147696aeef3ccc2f1c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/monopoly_Fiffy Dollar Back.jpg"
-dest_files=["res://.godot/imported/monopoly_Fiffy Dollar Back.jpg-472dae33281c3d147696aeef3ccc2f1c.s3tc.ctex"]
+dest_files=["res://.godot/imported/monopoly_Fiffy Dollar Back.jpg-472dae33281c3d147696aeef3ccc2f1c.s3tc.ctex", "res://.godot/imported/monopoly_Fiffy Dollar Back.jpg-472dae33281c3d147696aeef3ccc2f1c.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cab1jltpvfgxi"
 path.s3tc="res://.godot/imported/vhs music_T_VHS.png-36e9ce8dea6fb6e42d022c2230c2cf04.s3tc.ctex"
+path.etc2="res://.godot/imported/vhs music_T_VHS.png-36e9ce8dea6fb6e42d022c2230c2cf04.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/vhs music_T_VHS.png"
-dest_files=["res://.godot/imported/vhs music_T_VHS.png-36e9ce8dea6fb6e42d022c2230c2cf04.s3tc.ctex"]
+dest_files=["res://.godot/imported/vhs music_T_VHS.png-36e9ce8dea6fb6e42d022c2230c2cf04.s3tc.ctex", "res://.godot/imported/vhs music_T_VHS.png-36e9ce8dea6fb6e42d022c2230c2cf04.etc2.ctex"]
 
 [params]
 

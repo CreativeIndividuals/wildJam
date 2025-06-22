@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb4l4y4xhqimy"]
+
+[ext_resource type="Script" uid="uid://ccwi1c64hyfxm" path="res://Howtoplay.gd" id="1_boor6"]
+
+[node name="Howtoplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_boor6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="back" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Go back"
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "You wake up in your home… or what you’re told is your home.
+
+Everyone around you claims to be your family — yet their faces are blank, their voices familiar but empty. 
+
+You're trapped in a house filled with shadows, memories you can't recall, and one terrifying truth: someone here isn’t who they say they are.
+
+Search for clues. Match voices with memories. Uncover the truth before it's too late.
+
+But beware — not all shadows are harmless.
+
+WASD - to move around
+E - to interact with objects
+Q - blame"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/back" to="." method="_on_button_pressed"]

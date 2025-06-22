@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvc82uigi5ici"
 path.s3tc="res://.godot/imported/round table_PlainMetal.png-5854e2b7f9cc4aa6be9d91a98f8b58d3.s3tc.ctex"
+path.etc2="res://.godot/imported/round table_PlainMetal.png-5854e2b7f9cc4aa6be9d91a98f8b58d3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/character_obj/round table_PlainMetal.png"
-dest_files=["res://.godot/imported/round table_PlainMetal.png-5854e2b7f9cc4aa6be9d91a98f8b58d3.s3tc.ctex"]
+dest_files=["res://.godot/imported/round table_PlainMetal.png-5854e2b7f9cc4aa6be9d91a98f8b58d3.s3tc.ctex", "res://.godot/imported/round table_PlainMetal.png-5854e2b7f9cc4aa6be9d91a98f8b58d3.etc2.ctex"]
 
 [params]
 

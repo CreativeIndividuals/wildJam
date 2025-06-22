@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://s7c4agwp0hir"
 path.s3tc="res://.godot/imported/sofas and armchair_Armchair_BaseColor.png-ef19d8ca940e4c437454b21fa0d3a499.s3tc.ctex"
+path.etc2="res://.godot/imported/sofas and armchair_Armchair_BaseColor.png-ef19d8ca940e4c437454b21fa0d3a499.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/sofas and armchair_Armchair_BaseColor.png"
-dest_files=["res://.godot/imported/sofas and armchair_Armchair_BaseColor.png-ef19d8ca940e4c437454b21fa0d3a499.s3tc.ctex"]
+dest_files=["res://.godot/imported/sofas and armchair_Armchair_BaseColor.png-ef19d8ca940e4c437454b21fa0d3a499.s3tc.ctex", "res://.godot/imported/sofas and armchair_Armchair_BaseColor.png-ef19d8ca940e4c437454b21fa0d3a499.etc2.ctex"]
 
 [params]
 

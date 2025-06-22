@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch6xdni5eybkw"]
+[gd_scene load_steps=6 format=3 uid="uid://ch6xdni5eybkw"]
 
 [ext_resource type="Script" uid="uid://bi6of4i0knrxd" path="res://code/Menu.gd" id="1_xdvgc"]
+[ext_resource type="FontFile" uid="uid://cso0u2ox184v8" path="res://fonts/dreadringer.ttf" id="3_jmdev"]
 [ext_resource type="AudioStream" uid="uid://bl6nil104o7dh" path="res://audio/music/Themes Main Menu Loop.wav" id="3_o0tnf"]
+[ext_resource type="FontFile" uid="uid://b2jgxxsgi4y8f" path="res://fonts/Black Terror.ttf" id="4_b6cxs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aaywf"]
 
 [node name="Menu" type="ColorRect"]
 anchors_preset = 15
@@ -28,6 +32,8 @@ offset_right = 96.0
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jmdev")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aaywf")
 text = "Play"
 
 [node name="Quit" type="Button" parent="."]
@@ -37,13 +43,30 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = 60.0
-offset_right = 96.0
-offset_bottom = 116.0
+offset_left = -90.0
+offset_top = 131.0
+offset_right = 102.0
+offset_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jmdev")
 text = "Quit"
+
+[node name="htp" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = 63.0
+offset_right = 101.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_jmdev")
+text = "How to Play"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -52,16 +75,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -140.0
-offset_right = 128.0
-offset_bottom = -12.0
+offset_left = -203.0
+offset_top = -233.0
+offset_right = 181.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("4_b6cxs")
+theme_override_font_sizes/font_size = 200
 text = "Amnesia"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="htp" to="." method="_on_htp_pressed"]

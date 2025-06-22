@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dts7d3lv0e7o8"
 path.s3tc="res://.godot/imported/monopoly_Five Hundred Dollar Back.jpg-1b4aef5ea4ad22a3a809b6725b766a69.s3tc.ctex"
+path.etc2="res://.godot/imported/monopoly_Five Hundred Dollar Back.jpg-1b4aef5ea4ad22a3a809b6725b766a69.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/monopoly_Five Hundred Dollar Back.jpg"
-dest_files=["res://.godot/imported/monopoly_Five Hundred Dollar Back.jpg-1b4aef5ea4ad22a3a809b6725b766a69.s3tc.ctex"]
+dest_files=["res://.godot/imported/monopoly_Five Hundred Dollar Back.jpg-1b4aef5ea4ad22a3a809b6725b766a69.s3tc.ctex", "res://.godot/imported/monopoly_Five Hundred Dollar Back.jpg-1b4aef5ea4ad22a3a809b6725b766a69.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dutk8vyhpbaqq"
 path.s3tc="res://.godot/imported/drawer_table_Oak Natural - Querkus by Decospan.jpg-ecc4189484a0a32dfd332d921c47307e.s3tc.ctex"
+path.etc2="res://.godot/imported/drawer_table_Oak Natural - Querkus by Decospan.jpg-ecc4189484a0a32dfd332d921c47307e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://scenes/drawer_table_Oak Natural - Querkus by Decospan.jpg"
-dest_files=["res://.godot/imported/drawer_table_Oak Natural - Querkus by Decospan.jpg-ecc4189484a0a32dfd332d921c47307e.s3tc.ctex"]
+dest_files=["res://.godot/imported/drawer_table_Oak Natural - Querkus by Decospan.jpg-ecc4189484a0a32dfd332d921c47307e.s3tc.ctex", "res://.godot/imported/drawer_table_Oak Natural - Querkus by Decospan.jpg-ecc4189484a0a32dfd332d921c47307e.etc2.ctex"]
 
 [params]
 
