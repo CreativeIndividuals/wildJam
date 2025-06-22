@@ -909,7 +909,7 @@ effects = Dictionary[String, String]({
 "clue hover": "res://audio/Sfx/SFX_ClueHover.wav",
 "flip page": "res://audio/Sfx/SFX_Pages.wav",
 "speech_Brother": "res://audio/Sfx/SFX_Voice_Brother.wav",
-"speech_Father": "res://audio/Sfx/SFX_Voice_Impostor.wav",
+"speech_Father": "res://audio/Sfx/SFX_Voice_Father.wav",
 "speech_Girlfriend": "res://audio/Sfx/SFX_Voice_GirlFriend.wav",
 "speech_Mother": "res://audio/Sfx/SFX_Voice_Mother.wav"
 })
