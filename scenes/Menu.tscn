@@ -1,20 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch6xdni5eybkw"]
+[gd_scene load_steps=9 format=3 uid="uid://ch6xdni5eybkw"]
 
 [ext_resource type="Script" uid="uid://bi6of4i0knrxd" path="res://code/Menu.gd" id="1_xdvgc"]
+[ext_resource type="Texture2D" uid="uid://dergr5lxjfycc" path="res://scenes/character_obj/mainmenu.png" id="2_jmdev"]
 [ext_resource type="FontFile" uid="uid://cso0u2ox184v8" path="res://fonts/dreadringer.ttf" id="3_jmdev"]
 [ext_resource type="AudioStream" uid="uid://bl6nil104o7dh" path="res://audio/music/Themes Main Menu Loop.wav" id="3_o0tnf"]
 [ext_resource type="FontFile" uid="uid://b2jgxxsgi4y8f" path="res://fonts/Black Terror.ttf" id="4_b6cxs"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmdev"]
+
+[sub_resource type="Theme" id="Theme_b6cxs"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aaywf"]
 
 [node name="Menu" type="ColorRect"]
+material = SubResource("ShaderMaterial_jmdev")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_b6cxs")
 color = Color(0, 0.0235294, 0.0313726, 1)
 script = ExtResource("1_xdvgc")
+
+[node name="Mainmenu" type="Sprite2D" parent="."]
+position = Vector2(1560.5, 979)
+scale = Vector2(1.06905, 1.0387)
+texture = ExtResource("2_jmdev")
 
 [node name="ost" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_o0tnf")
