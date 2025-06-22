@@ -4,10 +4,12 @@ extends ColorRect
 signal blackoutDone
 
 func _ready():
-	color.a = 0
-	hide()
+	color.a = 1
+	create_tween().tween_property($".", "color:a", 0.0, duration).connect(
+		"finished", Callable(self, "hide")
+	)
 
-func fade_out():
+func fade_out(): 
 	create_tween().tween_property($".", "color:a", 0.0, duration).connect(
 		"finished", Callable(self, "_on_fade_out_complete")
 	)

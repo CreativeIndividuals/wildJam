@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://ds3a131765w7i"]
+[gd_scene load_steps=61 format=3 uid="uid://ds3a131765w7i"]
 
 [ext_resource type="Script" uid="uid://cq5d5yawdbkcw" path="res://code/Interractable.gd" id="1_400sg"]
 [ext_resource type="PackedScene" uid="uid://ce27720uko20k" path="res://scenes/drawer_table.glb" id="1_a8wo8"]
+[ext_resource type="PackedScene" uid="uid://cy7nk0sbw2vty" path="res://3d/door/door.gltf" id="1_bneo8"]
 [ext_resource type="PackedScene" uid="uid://bkblmla0t454v" path="res://scenes/sofas and armchair.glb" id="2_attvq"]
 [ext_resource type="Script" uid="uid://chb55jucsm5ad" path="res://code/GameState.gd" id="2_cpr0p"]
 [ext_resource type="Script" uid="uid://bimsnwhown4mg" path="res://code/character.gd" id="2_g4kob"]
@@ -25,10 +26,23 @@
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_x5vcc"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bneo8"]
+
 [sub_resource type="QuadMesh" id="QuadMesh_x5vcc"]
+material = SubResource("StandardMaterial3D_bneo8")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7bns"]
 albedo_color = Color(0.113725, 0.360784, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocgqw"]
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+backlight = Color(0, 1, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jbgew"]
+material = SubResource("StandardMaterial3D_ocgqw")
+radius = 0.95
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x5vcc"]
 
@@ -45,6 +59,68 @@ resource_name = "book"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxkoi"]
 albedo_color = Color(0.572549, 0.278431, 0.301961, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a85ww"]
+emission_enabled = true
+emission = Color(0.0752807, 0.553231, 0.643108, 1)
+emission_energy_multiplier = 2.67
+
+[sub_resource type="QuadMesh" id="QuadMesh_jhsr3"]
+material = SubResource("StandardMaterial3D_a85ww")
+size = Vector2(0.73, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_attvq"]
+size = Vector3(3.80664, 2.74951, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_754j2"]
+size = Vector3(3.42963, 2.94525, 1.85461)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bneo8"]
+size = Vector3(5.29321, 3.04791, 7.11618)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocgqw"]
+size = Vector3(1, 2.979, 0.644653)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jbgew"]
+size = Vector3(0.752014, 2.7019, 4.42822)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a85ww"]
+size = Vector3(10.334, 3.03821, 5.32605)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i4jil"]
+size = Vector3(9.14471, 3.67896, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jhsr3"]
+size = Vector3(0.676392, 2.96509, 10.142)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bq3a"]
+size = Vector3(1.81323, 2.97998, 6.44885)
+
+[sub_resource type="QuadMesh" id="QuadMesh_0bq3a"]
+size = Vector2(20, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_754j2"]
+emission_enabled = true
+emission = Color(1, 0.890724, 0.83371, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i4jil"]
+material = SubResource("StandardMaterial3D_754j2")
+size = Vector3(1, 1, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jai3c"]
+size = Vector3(1.17578, 1.40051, 1.33447)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1gdd5"]
+size = Vector3(2.13013, 1.82202, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_426vi"]
+size = Vector3(1, 1, 5.33582)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_naigu"]
+size = Vector3(0.592773, 1, 0.651855)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1oc7"]
+size = Vector3(1.13489, 1.48242, 1.03583)
 
 [sub_resource type="AudioStreamWAV" id="AudioStreamWAV_2rd6h"]
 
@@ -72,65 +148,84 @@ volumetric_fog_detail_spread = 0.5
 [node name="Env" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="TemporaryGround" type="StaticBody3D" parent="Env"]
+[node name="door" parent="Env" instance=ExtResource("1_bneo8")]
+transform = Transform3D(0.0110303, 0, -1.11493, 0, 1.235, 0, 0.999939, 0, 0.0122988, 4.765, -0.456, -9.252)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/TemporaryGround"]
+[node name="Ground" type="StaticBody3D" parent="Env"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0651951, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/Ground"]
 shape = SubResource("WorldBoundaryShape3D_x5vcc")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/TemporaryGround"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Ground"]
 transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
 mesh = SubResource("QuadMesh_x5vcc")
 surface_material_override/0 = SubResource("StandardMaterial3D_t7bns")
 
-[node name="drawer_table" parent="Env/TemporaryGround" instance=ExtResource("1_a8wo8")]
+[node name="drawer_table" parent="Env/Ground" instance=ExtResource("1_a8wo8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0037, -0.35382, -2.54549)
 
-[node name="drawer_table2" parent="Env/TemporaryGround" instance=ExtResource("1_a8wo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4838, 0, 4.132)
+[node name="drawer_table3" parent="Env/Ground" instance=ExtResource("1_a8wo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1765, -0.35382, 6.52451)
 
-[node name="sofas and armchair" parent="Env/TemporaryGround" instance=ExtResource("2_attvq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2864, 0, 9.385)
+[node name="drawer_table4" parent="Env/Ground" instance=ExtResource("1_a8wo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.125, -0.35382, -5.54385)
 
-[node name="sofas and armchair2" parent="Env/TemporaryGround" instance=ExtResource("2_attvq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1835, 0, -2.75897)
+[node name="drawer_table2" parent="Env/Ground" instance=ExtResource("1_a8wo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4838, -0.613085, 4.132)
 
-[node name="chair2" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0189, 0, -6.60618)
+[node name="sofas and armchair" parent="Env/Ground" instance=ExtResource("2_attvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2864, -0.427162, 9.385)
 
-[node name="chair3" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8947, 0, 9.16244)
+[node name="sofas and armchair2" parent="Env/Ground" instance=ExtResource("2_attvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1835, -0.389401, -2.75897)
 
-[node name="chair4" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1203, 0, 3.4327)
+[node name="chair2" parent="Env/Ground" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0189, -0.509305, -6.60618)
 
-[node name="chair5" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0108, 0, 6.58183)
+[node name="chair3" parent="Env/Ground" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.895, -0.555, 9.162)
 
-[node name="chair6" parent="Env/TemporaryGround" instance=ExtResource("3_bneo8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8732, 0, 6.14782)
+[node name="chair4" parent="Env/Ground" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1203, -0.429216, 3.4327)
 
-[node name="vhs music" parent="Env/TemporaryGround" instance=ExtResource("4_ocgqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5462, 0, 6.1121)
+[node name="chair5" parent="Env/Ground" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0108, -0.488993, 6.58183)
 
-[node name="vhs music2" parent="Env/TemporaryGround" instance=ExtResource("4_ocgqw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2035, 0, -5.59349)
+[node name="chair6" parent="Env/Ground" instance=ExtResource("3_bneo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8732, -0.581626, 6.14782)
 
-[node name="lamp" parent="Env/TemporaryGround" instance=ExtResource("5_attvq")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 16.5979, -0.83, 8.0233)
+[node name="vhs music" parent="Env/Ground" instance=ExtResource("4_ocgqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.251, -0.375, 6.402)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Env/TemporaryGround/lamp"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 32.4777, 0)
+[node name="vhs music2" parent="Env/Ground" instance=ExtResource("4_ocgqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.203, -0.365, -5.738)
 
-[node name="lamp2" parent="Env/TemporaryGround" instance=ExtResource("5_attvq")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 13.3075, -0.83, 8.0233)
+[node name="lamp" parent="Env/Ground" instance=ExtResource("5_attvq")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 16.5979, 0.117242, 9.71084)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Env/TemporaryGround/lamp2"]
-transform = Transform3D(17.1284, -10.3256, 0, 10.3256, 17.1284, 0, 0, 0, 20, -20.2918, 58.6819, 0)
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/Ground/lamp"]
+transform = Transform3D(20, 0, 0, 0, 0.192333, 19.9991, 0, -19.9991, 0.192333, -3.55316, 30.8452, 4.92657)
+light_color = Color(1, 0.760784, 0.811765, 1)
+spot_attenuation = -0.3
+spot_angle = 82.36
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Env"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05397, 3, -2.38295)
-omni_range = 28.144
-omni_attenuation = 0.0
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Ground/lamp"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -4.36444, 26.8738, 5.46365)
+mesh = SubResource("CapsuleMesh_jbgew")
+
+[node name="lamp2" parent="Env/Ground" instance=ExtResource("5_attvq")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 13.2932, 0.117242, 6.56476)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/Ground/lamp2"]
+transform = Transform3D(20, 0, 0, 0, 0.192333, 19.9991, 0, -19.9991, 0.192333, -3.55316, 30.8452, 4.92657)
+light_color = Color(1, 0.760784, 0.811765, 1)
+spot_attenuation = -0.3
+spot_angle = 82.36
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/Ground/lamp2"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, -4.16693, 26.9942, 5.55316)
+mesh = SubResource("CapsuleMesh_jbgew")
 
 [node name="clues" type="Node3D" parent="Env"]
 
@@ -269,7 +364,7 @@ shape = SubResource("BoxShape3D_2rd6h")
 
 [node name="mother" type="RigidBody3D" parent="Env/characters"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.57972, 2.11762, 7.64821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.57972, 0.744779, 7.64821)
 script = ExtResource("2_g4kob")
 character_name = "Mother"
 dialogue_lines = Array[String](["You always kept your sketchbook close, drawing your dreams and fears", "You never liked hugs, but I held you close when you needed it.", "Your favorite cornflakes is still in the kitchen cabinet."])
@@ -330,8 +425,269 @@ surface_material_override/0 = SubResource("StandardMaterial3D_oxkoi")
 [node name="Map_texured" parent="Env" instance=ExtResource("3_2rd6h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3672, -0.317838, -2.68703)
 
+[node name="gaming" parent="Env" instance=ExtResource("20_jbgew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.165, -0.465043, -3.11004)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Env/gaming"]
+transform = Transform3D(0.992467, 0, 0.12251, 0, 1, 0, -0.12251, 0, 0.992467, -5.14799, 1.51692, -3.99486)
+mesh = SubResource("QuadMesh_jhsr3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/gaming/MeshInstance3D"]
+transform = Transform3D(0.999475, -4.84763e-08, 0.032405, -3.72529e-09, -1, 1.77467e-07, 0.032405, -1.80654e-07, -0.999475, 0, 0, 0)
+light_color = Color(0.0745098, 0.552941, 0.643137, 1)
+light_energy = 1.302
+spot_range = 6.84648
+spot_attenuation = -1.4
+spot_angle = 34.7051
+spot_angle_attenuation = 0.277392
+
 [node name="kitchen" parent="Env" instance=ExtResource("4_r7sob")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4488, 0, -2.48591)
+transform = Transform3D(1, 0, 0, 0, 0.895, 0, 0, 0, 1, 12.39, 0, -2.681)
+
+[node name="monopoly" parent="Env" instance=ExtResource("21_a85ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3886, -0.300271, -2.21699)
+
+[node name="walls" type="StaticBody3D" parent="Env"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1846, 1.65991, -17.9081)
+shape = SubResource("BoxShape3D_attvq")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3797, 1.65991, -4.70019)
+shape = SubResource("BoxShape3D_attvq")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2427, 1.65991, 3.90271)
+shape = SubResource("BoxShape3D_attvq")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90931, 1.65982, 0.38158)
+shape = SubResource("BoxShape3D_754j2")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9996, 1.65982, 0.38158)
+shape = SubResource("BoxShape3D_754j2")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3646, 1.56772, -17.7405)
+shape = SubResource("BoxShape3D_bneo8")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4178, 1.56772, 0.839944)
+shape = SubResource("BoxShape3D_bneo8")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5105, 1.67245, -18.4728)
+shape = SubResource("BoxShape3D_ocgqw")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9277, 1.67737, -15.2654)
+shape = SubResource("BoxShape3D_jbgew")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3755, 1.6109, -10.3239)
+shape = SubResource("BoxShape3D_a85ww")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7131, 2.02386, 12.0299)
+shape = SubResource("BoxShape3D_i4jil")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.38216, 2.02386, 10.2104)
+shape = SubResource("BoxShape3D_i4jil")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7017, 1.64545, -9.26018)
+shape = SubResource("BoxShape3D_jhsr3")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2044, 1.64545, -0.670032)
+shape = SubResource("BoxShape3D_jhsr3")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5279, 1.64545, 7.52065)
+shape = SubResource("BoxShape3D_jhsr3")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.51494, 1.64545, 6.2031)
+shape = SubResource("BoxShape3D_jhsr3")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.01065, 1.64545, -4.77356)
+shape = SubResource("BoxShape3D_jhsr3")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6981, 1.71112, 8.86264)
+shape = SubResource("BoxShape3D_0bq3a")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6981, 1.61442, -3.39895)
+shape = SubResource("BoxShape3D_0bq3a")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
+
+[node name="roof" type="MeshInstance3D" parent="Env/walls"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 15, 3.02287, -3.25018)
+mesh = SubResource("QuadMesh_0bq3a")
+
+[node name="rooflight" type="MeshInstance3D" parent="Env/walls/roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16693, -0.439759, 0.0818179)
+mesh = SubResource("BoxMesh_i4jil")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/walls/roof/rooflight"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+light_color = Color(1, 0.890196, 0.835294, 1)
+light_energy = 2.505
+light_size = 2.0
+spot_attenuation = 0.5
+spot_angle = 90.0
+spot_angle_attenuation = 2.63902
+
+[node name="rooflight3" type="MeshInstance3D" parent="Env/walls/roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.66288, 8.73089, 0.0818172)
+mesh = SubResource("BoxMesh_i4jil")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/walls/roof/rooflight3"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+light_color = Color(1, 0.890196, 0.835294, 1)
+light_energy = 2.505
+light_size = 2.0
+spot_attenuation = 0.5
+spot_angle = 90.0
+spot_angle_attenuation = 2.63902
+
+[node name="rooflight4" type="MeshInstance3D" parent="Env/walls/roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41677, 11.1384, 0.0818172)
+mesh = SubResource("BoxMesh_i4jil")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/walls/roof/rooflight4"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+light_color = Color(1, 0.890196, 0.835294, 1)
+light_energy = 2.505
+light_size = 2.0
+spot_attenuation = 0.5
+spot_angle = 90.0
+spot_angle_attenuation = 2.63902
+
+[node name="rooflight5" type="MeshInstance3D" parent="Env/walls/roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07489, 2.84377, 0.0818174)
+mesh = SubResource("BoxMesh_i4jil")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/walls/roof/rooflight5"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+light_color = Color(1, 0.890196, 0.835294, 1)
+light_size = 2.0
+spot_attenuation = 0.5
+spot_angle = 90.0
+spot_angle_attenuation = 2.63902
+
+[node name="rooflight6" type="MeshInstance3D" parent="Env/walls/roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65829, -4.34284, 0.0818172)
+mesh = SubResource("BoxMesh_i4jil")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/walls/roof/rooflight6"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+light_color = Color(1, 0.890196, 0.835294, 1)
+light_size = 2.0
+spot_attenuation = 0.5
+spot_angle = 90.0
+spot_angle_attenuation = 2.63902
+
+[node name="rooflight2" type="MeshInstance3D" parent="Env/walls/roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25776, -11.1635, 0.0818181)
+mesh = SubResource("BoxMesh_i4jil")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Env/walls/roof/rooflight2"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+light_color = Color(1, 0.890196, 0.835294, 1)
+light_size = 2.0
+spot_attenuation = 0.5
+spot_angle = 90.0
+spot_angle_attenuation = 2.63902
+
+[node name="objects" type="StaticBody3D" parent="Env"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.43081, 0.678612, 2)
+shape = SubResource("BoxShape3D_jai3c")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.8577, 0.678612, 8.55203)
+shape = SubResource("BoxShape3D_jai3c")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.569, 0.678612, 10.9435)
+shape = SubResource("BoxShape3D_jai3c")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.49999, 0.678613, -1.0828)
+shape = SubResource("BoxShape3D_jai3c")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4254, 0.457299, 10.9435)
+shape = SubResource("BoxShape3D_1gdd5")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.388, 0.457299, -1.39114)
+shape = SubResource("BoxShape3D_1gdd5")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.04522, 0.457299, -7.54213)
+shape = SubResource("BoxShape3D_1gdd5")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9383, 0.678612, 8.9563)
+shape = SubResource("BoxShape3D_426vi")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9779, 0.678612, -3.34069)
+shape = SubResource("BoxShape3D_426vi")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.96292, 0.878869, 7.35055)
+shape = SubResource("BoxShape3D_naigu")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.738, 0.878869, 7.04253)
+shape = SubResource("BoxShape3D_naigu")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.89845, 0.878869, -5.63768)
+shape = SubResource("BoxShape3D_naigu")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7051, 0.490396, 10.0358)
+shape = SubResource("BoxShape3D_naigu")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9186, 0.878869, 4.25716)
+shape = SubResource("BoxShape3D_naigu")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0656, 1.12008, 6.89214)
+shape = SubResource("BoxShape3D_m1oc7")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Env/objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3923, 1.12008, 10.0249)
+shape = SubResource("BoxShape3D_m1oc7")
 
 [node name="audioManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -424,7 +780,7 @@ script = ExtResource("4_aug50")
 layout_mode = 2
 offset_left = 8.0
 offset_top = 8.0
-offset_right = 88.0
+offset_right = 488.0
 offset_bottom = 32.0
 theme_override_colors/font_color = Color(5.67943e-06, 0.560148, 0.304097, 1)
 clip_text = true
@@ -580,7 +936,7 @@ one_shot = true
 
 [node name="Player" type="CharacterBody3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.92863, 1.3908, -17.8786)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 20.7636, 0.963258, 8.11147)
 script = ExtResource("3_78awf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
@@ -599,11 +955,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0383968, -0.752247)
 target_position = Vector3(0, 0, -3)
 debug_shape_custom_color = Color(0.596078, 0.247059, 0.0509804, 1)
 
-[node name="gaming" parent="." instance=ExtResource("20_jbgew")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.165, 0, -3.11004)
-
-[node name="monopoly" parent="." instance=ExtResource("21_a85ww")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3886, -0.300271, -2.21699)
+[node name="OmniLight3D" type="OmniLight3D" parent="Player"]
+light_color = Color(0.999994, 0.562739, 0.307492, 1)
 
 [connection signal="timeout" from="HUD/dialogueBox/Timer" to="HUD/dialogueBox" method="_on_timer_timeout"]
 [connection signal="blackoutDone" from="HUD/blackoutOverlay" to="HUD/dialogueBox" method="_on_blackout_done"]

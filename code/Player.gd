@@ -8,6 +8,7 @@ const MOUSE_SENS = 0.002
 @onready var interaction_text = %Interact
 @onready var game_state = %GameState
 var current_interactable:Interractable = null
+@export var judgementLocation:Vector3
 
 signal walkChanged(walking:bool)
 
@@ -68,7 +69,7 @@ func check_interaction_target():
 		return
 	var target = ray.get_collider()
 
-	if target.is_in_group("clues"):
+	if game_state.current_phase==game_state.Phase.RESEARCH && target.is_in_group("clues"):
 		if current_interactable != target:
 			# Disable highlight on the previous clue
 			if is_instance_valid(current_interactable):
@@ -77,7 +78,7 @@ func check_interaction_target():
 			%audioManager.play_sfx("clue hover")
 			current_interactable.enable_highlight()
 		show_interaction_prompt("Press E to inspect")
-	elif target.is_in_group("characters"):
+	elif game_state.current_phase==game_state.Phase.JUDGEMENT && target.is_in_group("characters"):
 		# Disable highlight if we were highlighting a clue
 		if is_instance_valid(current_interactable):
 			current_interactable.disable_highlight()
@@ -118,3 +119,6 @@ func clear_interaction_target():
 		current_interactable.disable_highlight()
 	current_interactable = null
 	interaction_text.visible = false
+
+func teleport():
+	position=judgementLocation

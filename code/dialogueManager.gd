@@ -4,7 +4,7 @@ extends TextureRect
 @onready var person: Label = $Person
 @onready var timer = $Timer
 
-@export var DialogueTimeout := 5.0
+@export var DialogueTimeout := 3.0
 var speaking:=false
 
 func _ready():
@@ -33,7 +33,7 @@ func _on_timer_timeout():
 	hide()
 
 func _on_blackout_done() -> void:
-	show_dialogue("Me","what happened? nwhere am i? \nanyways I only remember three of you being there \nWHICH ONE IS FAKE?")
+	show_dialogue("agh my head","head hurts guys i'm tryna focus \nI only remember three of you being there \nWHICH ONE IS FAKE?")
 
 func _on_clue_collected(clue_data: Dictionary)->void:
 	%audioManager.play_sfx("flip page")

@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dutk8vyhpbaqq"
-path.s3tc="res://.godot/imported/drawer_table_Oak Natural - Querkus by Decospan.jpg-ecc4189484a0a32dfd332d921c47307e.s3tc.ctex"
+uid="uid://dd4h08665h06d"
+path.s3tc="res://.godot/imported/Wooden_Door.png-71cac97e26bb252b04ad18e4923d1a39.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "2efacd28c075007067cffe5c9eea6ad9"
-}
 
 [deps]
 
-source_file="res://scenes/drawer_table_Oak Natural - Querkus by Decospan.jpg"
-dest_files=["res://.godot/imported/drawer_table_Oak Natural - Querkus by Decospan.jpg-ecc4189484a0a32dfd332d921c47307e.s3tc.ctex"]
+source_file="res://3d/door/Wooden_Door.png"
+dest_files=["res://.godot/imported/Wooden_Door.png-71cac97e26bb252b04ad18e4923d1a39.s3tc.ctex"]
 
 [params]
 

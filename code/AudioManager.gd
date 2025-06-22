@@ -10,7 +10,7 @@ func _ready() -> void:
 	for character in get_tree().get_nodes_in_group("characters"):
 		character.spoke.connect(play_speech)
 
-func play_speech(character,dialogue):
+func play_speech(character,_dialogue):
 	play_sfx("speech_"+character)
 
 func play_ost():
